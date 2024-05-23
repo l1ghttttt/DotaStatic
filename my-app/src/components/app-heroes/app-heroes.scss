@@ -1,0 +1,56 @@
+.app-heroes {
+  margin: 30px 0;
+  width: 1100px;
+  height: auto;
+  grid-template-rows: repeat(4, 1fr);
+  display: grid;
+  grid-row-gap: 40px;
+  &__div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    img {
+      width: 20%;
+    }
+  }
+  &__str {
+    background: linear-gradient(135deg, rgb(37, 10, 10), rgb(74, 25, 25) 75%);
+  }
+  &__agi {
+    background: linear-gradient(225deg, rgb(10, 37, 10), rgb(25, 74, 25) 75%);
+    //box-shadow: 5px -5px 15px rgba(37, 91, 37, 1);
+  }
+  &__int {
+    background: linear-gradient(45deg, rgb(10, 10, 37), rgb(25, 25, 74) 75%);
+    //box-shadow: -5px 5px 15px rgba(37, 37, 91, 1);
+  }
+  &__all {
+    background: linear-gradient(325deg, rgb(37, 37, 10), rgb(74, 74, 25) 75%);
+    //box-shadow: 5px 5px 15px rgba(91, 91, 37, 1);
+  }
+  &__container {
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    transition: 1s;
+    border-radius: 20px;
+    gap: 15px;
+    &__hero {
+      width: 75px;
+      overflow: hidden;
+      border-radius: 10px;
+      transform: scale(1);
+      transition: 0.2s;
+    }
+    &__hero:hover {
+      transform: scale(1.75);
+      z-index: 2;
+    }
+    video {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

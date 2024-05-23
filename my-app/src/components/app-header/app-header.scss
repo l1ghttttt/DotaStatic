@@ -1,0 +1,155 @@
+.header {
+  margin-top: 60px;
+  width: 1100px;
+  margin-inline: auto;
+  user-select: none;
+
+  &__logo {
+    transition-duration: .2s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 40px;
+  }
+
+  &__menu {
+    margin-left: auto;
+    font-size: 28px;
+
+    &-list {
+      display: flex;
+      align-items: center;
+      column-gap: 40px;
+      color: #ffffff;
+    }
+
+    &-link:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        translate: -50%;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition-duration: .2s;
+      }
+    }
+
+  }
+
+  &__button {
+    height: 48px;
+    padding-inline: 18px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    transition-duration: .2s;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+  }
+}
+
+
+
+
+
+
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  width: 1100px;
+  height: 700px;
+
+  &__image {
+    position: absolute;
+    left: calc(100% - 450px);
+    top: 8%;
+    width: 450px;
+    display: flex;
+    overflow: hidden;
+    img {
+      transition-duration: .2s;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    left: 75px;
+    top: 25%;
+    width: 500px;
+    height: auto;
+    color: #eeeeee;
+    user-select: none;
+    h2 {
+      font-size: 56px;
+    }
+    h3 {
+      font-size: 28px;
+    }
+
+    &__name {
+      width: 500px;
+      height: 70px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      h2 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        transition: .2s;
+        height: 70px;
+      }
+    }
+
+    &__description {
+      width: 500px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      overflow: hidden;
+      h3 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        transition: .2s;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
