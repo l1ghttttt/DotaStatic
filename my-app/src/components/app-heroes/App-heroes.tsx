@@ -38,11 +38,11 @@ const AppHeroes: React.FC<AppHeroesProps> = () => {
         };
     }, []);
 
+
     return (
         <div className="app-heroes">
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__str">
-
                     <div className="app-heroes__container__hero">
                         <video ref={videoRef} loop muted playsInline>
                             <source src="/npc_dota_hero_abaddon%20—%20копия.webm" type="video/webm"/>
@@ -583,7 +583,6 @@ const AppHeroes: React.FC<AppHeroesProps> = () => {
             <div className="app-heroes__div">
                 <img src="/all.png" alt=""/>
                 <div className="app-heroes__container app-heroes__all">
-
                     <div className="app-heroes__container__hero">
                         <video ref={videoRef} loop muted playsInline>
                             <source src="/npc_dota_hero_abaddon%20—%20копия.webm" type="video/webm"/>

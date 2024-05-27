@@ -9,27 +9,31 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 35px;
     img {
       width: 20%;
     }
   }
-  &__str {
-    background: linear-gradient(135deg, rgb(37, 10, 10), rgb(74, 25, 25) 75%);
-  }
-  &__agi {
-    background: linear-gradient(225deg, rgb(10, 37, 10), rgb(25, 74, 25) 75%);
-    //box-shadow: 5px -5px 15px rgba(37, 91, 37, 1);
-  }
-  &__int {
-    background: linear-gradient(45deg, rgb(10, 10, 37), rgb(25, 25, 74) 75%);
-    //box-shadow: -5px 5px 15px rgba(37, 37, 91, 1);
-  }
-  &__all {
-    background: linear-gradient(325deg, rgb(37, 37, 10), rgb(74, 74, 25) 75%);
-    //box-shadow: 5px 5px 15px rgba(91, 91, 37, 1);
-  }
+/*    &__str {
+      background: linear-gradient(135deg, rgb(37, 10, 10), rgb(74, 25, 25) 75%);
+    }
+    &__agi {
+      background: linear-gradient(225deg, rgb(10, 37, 10), rgb(25, 74, 25) 75%);
+      //box-shadow: 5px -5px 15px rgba(37, 91, 37, 1);
+    }
+    &__int {
+      background: linear-gradient(45deg, rgb(10, 10, 37), rgb(25, 25, 74) 75%);
+      //box-shadow: -5px 5px 15px rgba(37, 37, 91, 1);
+    }
+    &__all {
+      background: linear-gradient(325deg, rgb(37, 37, 10), rgb(74, 74, 25) 75%);
+      //box-shadow: 5px 5px 15px rgba(91, 91, 37, 1);
+    }*/
   &__container {
-    width: 75%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    border: rgba(255, 255, 255, .3) 2px solid;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .8);
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +42,7 @@
     border-radius: 20px;
     gap: 15px;
     &__hero {
-      width: 75px;
+      width: 76px;
       overflow: hidden;
       border-radius: 10px;
       transform: scale(1);
