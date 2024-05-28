@@ -10,9 +10,6 @@ const App = () => {
     return (
         <div className="app">
             <AppHeader/>
-            <AppNews/>
-            <AppHeroes/>
-            <AppTeams/>
             <AppPlayers/>
         </div>
     );
