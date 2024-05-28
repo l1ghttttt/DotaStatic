@@ -26,10 +26,10 @@ const PlayersList = ({players, loading}) => {
                         role = `Support`
                         break
                     case 5:
-                        role = `Full Support`
+                        role = `Full-Support`
                         break
                     default:
-                        role = `no role`
+                        role = `No-Role`
                         break
                 }
                 return(

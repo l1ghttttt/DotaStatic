@@ -1,5 +1,26 @@
 .players {
   width: 1100px;
+  &__select {
+    height: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &:focus {
+      outline: none;
+    }
+    option {
+      color: #000000;
+    }
+    option:checked {
+      background-color: #444; /* Темнее фон для выбранного значения */
+      color: #fff; /* Белый цвет текста для выбранного значения */
+    }
+  }
   h3 {
     font-size: 6rem;
     color: white;
@@ -13,6 +34,8 @@
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+    align-items: flex-end;
+    gap: 40px;
   }
   &__input {
     width: 30%;
