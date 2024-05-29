@@ -23,6 +23,7 @@ const AppHeroes = () => {
         getHeroes();
     }, []);
 
+
     if (loading) {
         return <p style={{color: `red`}}>Loading...</p>;
     }
@@ -32,10 +33,10 @@ const AppHeroes = () => {
 
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__str">
-                    {heroes.map(hero => {
+                    {heroes.map((hero, i) => {
                         if (hero.primary_attr === `str`)
                         return(
-                            <div>
+                            <div key={i}>
                                 <div className="app-heroes__container__hero">
                                     <video loop muted playsInline>
                                         <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
@@ -54,10 +55,10 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <img src="/agi.png" alt=""/>
                 <div className="app-heroes__container app-heroes__agi">
-                    {heroes.map(hero => {
+                    {heroes.map((hero, i) => {
                         if (hero.primary_attr === `agi`)
                             return(
-                                <div>
+                                <div key={i}>
                                     <div className="app-heroes__container__hero">
                                         <video loop muted playsInline>
                                             <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
@@ -73,10 +74,10 @@ const AppHeroes = () => {
 
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__int">
-                    {heroes.map(hero => {
+                    {heroes.map((hero, i) => {
                         if (hero.primary_attr === `int`)
                             return(
-                                <div>
+                                <div key={i}>
                                     <div className="app-heroes__container__hero">
                                         <video loop muted playsInline>
                                             <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
@@ -94,10 +95,10 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <img src="/all.png" alt=""/>
                 <div className="app-heroes__container app-heroes__all">
-                    {heroes.map(hero => {
+                    {heroes.map((hero, i) => {
                         if (hero.primary_attr === `all`)
                             return(
-                                <div>
+                                <div key={i}>
                                     <div className="app-heroes__container__hero">
                                         <video loop muted playsInline>
                                             <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
