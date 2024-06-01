@@ -6,7 +6,8 @@ const PlayerStats = () => {
     const [player, setPlayer] = useState({});
     const [loading, setLoading] = useState(false);
     let statistic
-    const id = 861154984//409467924(фасоль) //(влад) 321580662
+    const id = 409467924 //321580662(фасоль) //(влад) 861154984
+
     useEffect(() => {
         const getPlayer = async () => {
             setLoading(true);
@@ -62,11 +63,28 @@ const PlayerStats = () => {
         wrColor = `red`
     }
 
+    let leaderrang
+    if (player?.leaderboard_rank) {
+        leaderrang = player?.leaderboard_rank
+    }
+    let titan = null
+    if (leaderrang === 1) {
+        titan = `80-1`
+    } else if (leaderrang <= 10) {
+        titan = `80-10`
+    } else if (leaderrang <= 100) {
+        titan = `80-100`
+    } else if (leaderrang <= 1000) {
+        titan = `80-1000`
+    } else {
+        titan = null
+    }
+
     return (
         <main className="playerStats">
             <div className="playerStats__name">
                 <img
-                    src={player?.rank_tier + `.png`}
+                    src={titan ? (titan + `.png`) : (player?.rank_tier + `.png`)}
                     alt="ранг игрока"
                     className={`playerStats__name-rang`}
                     width={300}
