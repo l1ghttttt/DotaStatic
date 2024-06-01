@@ -10,6 +10,8 @@ const AppHeroStats = () => {
     let borderStr = 0
     let borderAgi = 0
     let borderInt = 0
+    let damageBonus = 0
+    let typeAttack
 
     useEffect(() => {
         const getHero = async () => {
@@ -33,25 +35,34 @@ const AppHeroStats = () => {
     switch (hero[id - 1].primary_attr) {
         case `str`:
             borderStr = 2
+            damageBonus = hero[id - 1].base_str
             break
         case `agi`:
             borderAgi = 2
+            damageBonus = hero[id - 1].base_agi
             break
         case `int`:
             borderInt = 2
+            damageBonus = hero[id - 1].base_int
             break
         case `all`:
             borderStr = 2
             borderAgi = 2
             borderInt = 2
+            damageBonus = (hero[id - 1].base_str + hero[id - 1].base_agi + hero[id - 1].base_int) * 0.6
             break
+    }
+    if (hero[id - 1].attack_type === `Melee`) {
+        typeAttack = `Ближний`
+    } else {
+        typeAttack = `Дальний`
     }
 
     return (
         <main className="herostats">
             <button className="herostats__button" type="button">
                 ⬅ Назад
-            </button>
+            </button>0,
             <h1 className="herostats__name">{hero[id - 1].localized_name}</h1>
 
             <section className={`herostats__main`}>
@@ -80,11 +91,11 @@ const AppHeroStats = () => {
                         let g = hero[id - 1].roles.length - 1
                         if (role === hero[id - 1].roles[g]) {
                             return (
-                                <p className={`herostats__main__info-roles-role`} key={i}>{role}</p>
+                                <p className={`statistic herostats__main__info-roles-role`} key={i}>{role}</p>
                             )
                         } else {
                             return (
-                                <p className={`herostats__main__info-roles-role`} key={i}>{role},</p>
+                                <p className={`statistic herostats__main__info-roles-role`} key={i}>{role},</p>
                             )
                         }
                     })}</h4>
@@ -114,25 +125,22 @@ const AppHeroStats = () => {
                     <p>{hero[id - 1].base_int + "  " + " +" + hero[id - 1].int_gain}</p>
                 </div>
             </section>
+
             <section className={`herostats__stats`}>
-                <div>
-                    <p style={{color: `red`}}>attack_range: {hero[id - 1].attack_range}</p>
-                    <p style={{color: `red`}}>attack_rate: {hero[id - 1].attack_rate}</p>
-                    <p style={{color: `red`}}>attack_type: {hero[id - 1].attack_type}</p>
-                    <p style={{color: `red`}}>base_armor: {hero[id - 1].base_armor}</p>
-                    <p style={{color: `red`}}>base_attack_max: {hero[id - 1].base_attack_max}</p>
-                    <p style={{color: `red`}}>base_attack_min : {hero[id - 1].base_attack_min}</p>
-                    <p style={{color: `red`}}>base_attack_time : {hero[id - 1].base_attack_time}</p>
-                </div>
-                <div>
-                    <p style={{color: `red`}}>base_health : {hero[id - 1].base_health}</p>
-                    <p style={{color: `red`}}>base_health_regen : {hero[id - 1].base_health_regen}</p>
-                    <p style={{color: `red`}}>base_mana : {hero[id - 1].base_mana}</p>
-                    <p style={{color: `red`}}>base_mana_regen : {hero[id - 1].base_mana_regen}</p>
-                    <p style={{color: `red`}}>move_speed : {hero[id - 1].move_speed}</p>
-                    <p style={{color: `red`}}>day_vision : {hero[id - 1].day_vision}</p>
-                    <p style={{color: `red`}}>night_vision : {hero[id - 1].night_vision}</p>
-                </div>
+                <h3 className={`herostats__stats-name`}>Начальные показатели</h3>
+                <p className={`herostats__stats-value`}>тип боя: {typeAttack}</p>
+                <p className={`herostats__stats-value`}>урон : {(hero[id - 1].base_attack_min + damageBonus)} - {(hero[id - 1].base_attack_max + damageBonus)}</p>
+                <p className={`herostats__stats-value`}>дальность атаки: {hero[id - 1].attack_range}</p>
+                <p className={`herostats__stats-value`}>интервал атак: {hero[id - 1].attack_rate}</p>
+                <p className={`herostats__stats-value`}>скорость атаки : {hero[id - 1].base_attack_time + hero[id - 1].base_agi}</p>
+                <p className={`herostats__stats-value`}>броня: {hero[id - 1].base_armor + hero[id - 1].base_agi * 0.16}</p>
+                <p className={`herostats__stats-value`}>здоровье : {hero[id - 1].base_health + hero[id - 1].base_str * 19}</p>
+                <p className={`herostats__stats-value`}>регенирация здоровья : {hero[id - 1].base_health_regen + hero[id - 1].base_str * 0.03}</p>
+                <p className={`herostats__stats-value`}>мана : {hero[id - 1].base_mana + hero[id - 1].base_int * 13}</p>
+                <p className={`herostats__stats-value`}>восстановление маны : {hero[id - 1].base_mana_regen + hero[id - 1].base_int * 0.04}</p>
+                <p className={`herostats__stats-value`}>скорость : {hero[id - 1].move_speed}</p>
+                <p className={`herostats__stats-value`}>дневной/ночной обзор
+                    : {hero[id - 1].day_vision}/{hero[id - 1].night_vision}</p>
             </section>
         </main>
     );
