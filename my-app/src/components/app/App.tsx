@@ -1,17 +1,30 @@
-import React from 'react';
-import './app.css'
-import AppHeader from "../app-header/App-header";
-import AppHeroes from "../app-heroes/App-heroes";
-import AppHeroStats from "../app-heroStats/app-heroStats";
-import AppTeams from "../app-teams/App-teams";
-import AppPlayers from "../app-players/app-players";
-import PlayerStats from "../player-stats/player-stats";
+import React, { lazy, Suspense } from 'react';
+import './app.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+const Main = lazy(() => import('../../pages/MainPage'));
+const Hero = lazy(() => import('../../pages/HeroesPage'));
+const HeroStats = lazy(() => import('../../pages/HeroStatsPage'));
+const Team = lazy(() => import('../../pages/TeamPage'));
+const Player = lazy(() => import('../../pages/PlayersPage'));
+const PlayerStats = lazy(() => import('../../pages/PlayerStatsPage'));
 
 const App = () => {
+    const fallback = <div>Loading...</div>;
+
     return (
-        <div className="app">
-            <PlayerStats/>
-        </div>
+        <Router>
+            <div className="app">
+                <Suspense fallback={fallback}>
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/heroes" element={<Hero />} />
+                        <Route path="/teams" element={<Team />} />
+                        <Route path="/players" element={<Player />} />
+                    </Routes>
+                </Suspense>
+            </div>
+        </Router>
     );
 };
 

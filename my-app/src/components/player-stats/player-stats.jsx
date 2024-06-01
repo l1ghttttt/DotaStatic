@@ -82,6 +82,9 @@ const PlayerStats = () => {
 
     return (
         <main className="playerStats">
+            <button className="playerStats__button" type="button">
+                ⬅ Назад
+            </button>
             <div className="playerStats__name">
                 <img
                     src={titan ? (titan + `.png`) : (player?.rank_tier + `.png`)}
@@ -158,12 +161,14 @@ const PlayerStats = () => {
                         wrColor = `red`
                     }
                     return (<div key={i} className="playerStats__friends__friend">
-                        <img src={player?.avatarfull} alt="" className="playerStats__friends__friend-ava"/>
-                        <h4 className="playerStats__friends__friend-name"><a href="">{player?.personaname}</a></h4>
-                        <h4>Игр вместе: {player?.with_games}</h4>
-                        <h4>Побед вместе: {player?.win}</h4>
-                        <h4>Общий WR: <span style={{color: wrColor}}>{parseFloat((Number(player?.win) / Number(player?.with_games) * 100).toFixed(2))}%</span></h4>
-                    </div>
+                            <img src={player?.avatarfull} alt="" className="playerStats__friends__friend-ava"/>
+                            <h4 className="playerStats__friends__friend-name"><a href="">{player?.personaname}</a></h4>
+                            <h4>Игр вместе: {player?.with_games}</h4>
+                            <h4>Побед вместе: {player?.win}</h4>
+                            <h4>Общий WR: <span
+                                style={{color: wrColor}}>{parseFloat((Number(player?.win) / Number(player?.with_games) * 100).toFixed(2))}%</span>
+                            </h4>
+                        </div>
                     )
                 })}
             </div>

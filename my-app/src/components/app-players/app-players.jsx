@@ -1,4 +1,4 @@
-import React, {useEffect, useId, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './app-players.css';
 import axios from "axios";
 import TeamsPagination from "../teams-pagination/teams-pagination";

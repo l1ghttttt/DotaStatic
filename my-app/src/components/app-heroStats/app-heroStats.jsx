@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './app-heroStats.css';
 import axios from "axios";
 import ProgressBar from "../progress-bar/progress-bar";
@@ -62,7 +62,7 @@ const AppHeroStats = () => {
         <main className="herostats">
             <button className="herostats__button" type="button">
                 ⬅ Назад
-            </button>0,
+            </button>
             <h1 className="herostats__name">{hero[id - 1].localized_name}</h1>
 
             <section className={`herostats__main`}>

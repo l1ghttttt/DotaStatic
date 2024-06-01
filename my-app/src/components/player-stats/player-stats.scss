@@ -5,6 +5,27 @@
   align-items: center;
   color: white;
 
+  &__button {
+    position: fixed;
+    top: 50px;
+    right: calc(100% - 133px);
+    height: 48px;
+    padding-inline: 18px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    transition-duration: .2s;
+    box-shadow: 3px 5px 20px white;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+  }
   &__friends {
     width: 100%;
     display: flex;

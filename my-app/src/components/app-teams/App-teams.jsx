@@ -12,7 +12,6 @@ function AppTeams() {
     const [currentPage, setCurrentPage] = useState(1);
     const [term, setTerm] = useState("");
     const teamsPerPage = 50
-    const mainRef = useRef(null);
 
 
     useEffect(() => {
@@ -33,10 +32,6 @@ function AppTeams() {
             }
         };
         getTeams();
-
-        if (mainRef.current !== null) {
-            mainRef.current.style.minHeight = `${window.innerHeight}px`;
-        }
     }, []);
 
 
@@ -57,7 +52,7 @@ function AppTeams() {
     };
 
     return (
-        <main className={"teams"} ref={mainRef}>
+        <main className={"teams"}>
             <h3 className={"teams__name"}>Teams</h3>
             <form action="">
                 <div className="form__group field">
