@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './player-stats.css';
 import axios from "axios";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 
-const PlayerStats = () => {
+const PlayerStats = ({id}) => {
     const [player, setPlayer] = useState({});
     const [loading, setLoading] = useState(false);
     let statistic
-    const id = 409467924 //321580662(фасоль) //(влад) 861154984
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getPlayer = async () => {
@@ -82,12 +83,14 @@ const PlayerStats = () => {
 
     return (
         <main className="playerStats">
-            <button className="playerStats__button" type="button">
+            <button className="playerStats__button" type="button" onClick={() => {
+                navigate(-1)
+            }}>
                 ⬅ Назад
             </button>
             <div className="playerStats__name">
                 <img
-                    src={titan ? (titan + `.png`) : (player?.rank_tier + `.png`)}
+                    src={titan ? (`/` + titan + `.png`) : (`/` + player?.rank_tier + `.png`)}
                     alt="ранг игрока"
                     className={`playerStats__name-rang`}
                     width={300}
@@ -162,7 +165,7 @@ const PlayerStats = () => {
                     }
                     return (<div key={i} className="playerStats__friends__friend">
                             <img src={player?.avatarfull} alt="" className="playerStats__friends__friend-ava"/>
-                            <h4 className="playerStats__friends__friend-name"><a href="">{player?.personaname}</a></h4>
+                            <h4 className="playerStats__friends__friend-name"><NavLink to={`/players/${player?.account_id}`}> {player?.personaname} </NavLink></h4>
                             <h4>Игр вместе: {player?.with_games}</h4>
                             <h4>Побед вместе: {player?.win}</h4>
                             <h4>Общий WR: <span

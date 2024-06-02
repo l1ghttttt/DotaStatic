@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './app-heroes.css'
 import axios from "axios";
+import {NavLink} from "react-router-dom";
 
 const AppHeroes = () => {
 
@@ -34,15 +35,17 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__str">
                     {heroes.map((hero, i) => {
-                        if (hero.primary_attr === `str`)
+                        if (hero?.primary_attr === `str`)
                         return(
                             <div key={i}>
-                                <div className="app-heroes__container__hero">
-                                    <video loop muted playsInline>
-                                        <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
-                                    </video>
-                                </div>
-                                <h4 className={`app-heroes__container__hero-name`}>{hero.localized_name}</h4>
+                                <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                    <div className="app-heroes__container__hero">
+                                        <video loop muted playsInline>
+                                            <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>
+                                        </video>
+                                    </div>
+                                    <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                </NavLink>
                             </div>
                         )
                     })
@@ -56,15 +59,17 @@ const AppHeroes = () => {
                 <img src="/agi.png" alt=""/>
                 <div className="app-heroes__container app-heroes__agi">
                     {heroes.map((hero, i) => {
-                        if (hero.primary_attr === `agi`)
+                        if (hero?.primary_attr === `agi`)
                             return(
                                 <div key={i}>
-                                    <div className="app-heroes__container__hero">
-                                        <video loop muted playsInline>
-                                            <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
-                                        </video>
-                                    </div>
-                                    <h4 className={`app-heroes__container__hero-name`}>{hero.localized_name}</h4>
+                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                        <div className="app-heroes__container__hero">
+                                            <video loop muted playsInline>
+                                                <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>
+                                            </video>
+                                        </div>
+                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                    </NavLink>
                                 </div>
                             )
                     })
@@ -75,15 +80,17 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__int">
                     {heroes.map((hero, i) => {
-                        if (hero.primary_attr === `int`)
+                        if (hero?.primary_attr === `int`)
                             return(
                                 <div key={i}>
-                                    <div className="app-heroes__container__hero">
-                                        <video loop muted playsInline>
-                                            <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
-                                        </video>
-                                    </div>
-                                    <h4 className={`app-heroes__container__hero-name`}>{hero.localized_name}</h4>
+                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                        <div className="app-heroes__container__hero">
+                                            <video loop muted playsInline>
+                                                <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>
+                                            </video>
+                                        </div>
+                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                    </NavLink>
                                 </div>
                             )
                     })
@@ -96,15 +103,17 @@ const AppHeroes = () => {
                 <img src="/all.png" alt=""/>
                 <div className="app-heroes__container app-heroes__all">
                     {heroes.map((hero, i) => {
-                        if (hero.primary_attr === `all`)
+                        if (hero?.primary_attr === `all`)
                             return(
                                 <div key={i}>
-                                    <div className="app-heroes__container__hero">
-                                        <video loop muted playsInline>
-                                            <source src={`/heroes/${hero.localized_name}.webm`} type="video/webm"/>
-                                        </video>
-                                    </div>
-                                    <h4 className={`app-heroes__container__hero-name`}>{hero.localized_name}</h4>
+                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                        <div className="app-heroes__container__hero">
+                                            <video loop muted playsInline>
+                                                <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>
+                                            </video>
+                                        </div>
+                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                    </NavLink>
                                 </div>
                             )
                     })

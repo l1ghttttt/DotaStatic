@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import './app-header.css';
+import {NavLink} from "react-router-dom";
 
 const AppHeader = () => {
     const heightRef = useRef(null);
@@ -41,6 +42,7 @@ const AppHeader = () => {
         <>
             <header className="header">
                 <div className="header__inner">
+                    <NavLink to={'/'}>
                         <img src="/DotaIcon.png"
                              alt="DotaStats"
                              className="header__logo"
@@ -48,12 +50,12 @@ const AppHeader = () => {
                              loading="lazy"
                              onClick={() => switchPos(0, 0,0)}
                         />
-
+                    </NavLink>
                     <nav className="header__menu">
                         <ul className={`header__menu-list`}>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(200, 75,450)}>Герои</a></li>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(400, 150,900)}>Команды</a></li>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(600, 225,1350)}>Игроки</a></li>
+                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(200, 75,450)}><NavLink to={'/heroes'}>Герои</NavLink></a></li>
+                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(400, 150,900)}><NavLink to={'/teams'}>Команды</NavLink></a></li>
+                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(600, 225,1350)}><NavLink to={'/players'}>Игроки</NavLink></a></li>
                         </ul>
                     </nav>
                     <button className="header__button" type="button">

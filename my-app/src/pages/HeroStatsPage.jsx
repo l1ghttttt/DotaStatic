@@ -5,7 +5,7 @@ import AppHeroStats from "../components/app-heroStats/app-heroStats";
 const HeroStatsPage = () => {
     return (
         <>
-         <AppHeroStats/>
+            <AppHeroStats/>
         </>
     );
 };

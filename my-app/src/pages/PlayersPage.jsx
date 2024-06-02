@@ -5,7 +5,7 @@ import AppPlayers from "../components/app-players/app-players";
 const PlayersPage = () => {
     return (
         <>
-         <AppPlayers/>
+            <AppPlayers/>
         </>
     );
 };

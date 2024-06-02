@@ -48,7 +48,7 @@ const AppPlayers = () => {
         setSelected(e.target.value);
     }
 
-    if (selectRef.current) {
+    if (selectRef.current !== null) {
         if (term || selectRef.current.value !== "all") {
             currentPlayers = players.filter(player =>
                 player.personaname && player.personaname.toLowerCase().includes(term.toLowerCase()) || player.team_name.toLowerCase().includes(term.toLowerCase())
@@ -60,6 +60,7 @@ const AppPlayers = () => {
             }
         }
     }
+    console.log(players);
 
     return (
         <main className="players" ref={mainRef}>

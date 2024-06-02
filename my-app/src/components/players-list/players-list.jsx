@@ -1,5 +1,6 @@
 import React from 'react';
 import './players-list.css'
+import {NavLink} from "react-router-dom";
 
 const PlayersList = ({players, loading}) => {
 
@@ -36,7 +37,7 @@ const PlayersList = ({players, loading}) => {
                     <li key={i} className="players__list__card">
                         <img src={player.avatarfull} alt="" className={`players__list__card-avatar`}/>
                         <div className={`players__list__card-description`}>
-                            <h4><a href={player.profileurl} target="_blank" className={`players__list__card-description__name`}>{player.personaname}</a></h4>
+                            <h4><NavLink to={`/players/${player.account_id}`} className={`players__list__card-description__name`}>{player.personaname}</NavLink></h4>
                             <div className={`players__list__card-description__other`}>
                                 <p className={`players__list__card-description__other-pos`}>Position: {role}</p>
                                 <p className={`players__list__card-description__other-country`}>Country: {player.loccountrycode}</p>

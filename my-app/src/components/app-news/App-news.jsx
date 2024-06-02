@@ -5,14 +5,11 @@ const AppNews = () => {
 
     const contRef = useRef(null);
 
-
-
     useEffect(() => {
         if (contRef.current!== null) {
             contRef.current.style.height = `${window.innerHeight}px`;
         }
     }, []);
-
 
     return (
         <main className="main">

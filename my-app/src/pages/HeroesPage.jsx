@@ -5,7 +5,7 @@ import '../../src/components/app-heroes/app-heroes.css'
 const HeroesPage = () => {
     return (
         <>
-           <AppHeroes/>
+            <AppHeroes/>
         </>
     );
 };

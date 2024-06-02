@@ -5,7 +5,7 @@ import AppTeams from "../components/app-teams/App-teams";
 const TeamPage = () => {
     return (
         <>
-          <AppTeams/>
+            <AppTeams/>
         </>
     );
 };

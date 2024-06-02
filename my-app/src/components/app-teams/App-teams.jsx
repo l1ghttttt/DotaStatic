@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './app-teams.css'
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import TeamsList from "../teams-list/Teams-list";
 import TeamsPagination from "../teams-pagination/teams-pagination";
