@@ -53,7 +53,7 @@ const AppHeader = () => {
                     </NavLink>
                     <nav className="header__menu">
                         <ul className={`header__menu-list`}>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(200, 75,450)}><NavLink to={'/heroes'}>Герои</NavLink></a></li>
+                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(200, 75,450)}><NavLink  className={({isActive}) => isActive ? "active" : ''} to={'/heroes'}>Герои</NavLink></a></li>
                             <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(400, 150,900)}><NavLink to={'/teams'}>Команды</NavLink></a></li>
                             <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(600, 225,1350)}><NavLink to={'/players'}>Игроки</NavLink></a></li>
                         </ul>

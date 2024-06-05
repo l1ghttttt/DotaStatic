@@ -24,6 +24,8 @@ const AppHeroes = () => {
         getHeroes();
     }, []);
 
+    console.log(heroes)
+
 
     if (loading) {
         return <p style={{color: `red`}}>Loading...</p>;
@@ -37,8 +39,8 @@ const AppHeroes = () => {
                     {heroes.map((hero, i) => {
                         if (hero?.primary_attr === `str`)
                         return(
-                            <div key={i}>
-                                <NavLink to={`/heroes/${hero?.id - 1}`}>
+                            <div key={i} className={`app-heroes__div-cont`}>
+                                <NavLink to={`/heroes/${hero?.id}`}>
                                     <div className="app-heroes__container__hero">
                                         <video loop muted playsInline>
                                             <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>
@@ -61,7 +63,7 @@ const AppHeroes = () => {
                     {heroes.map((hero, i) => {
                         if (hero?.primary_attr === `agi`)
                             return(
-                                <div key={i}>
+                                <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id - 1}`}>
                                         <div className="app-heroes__container__hero">
                                             <video loop muted playsInline>
@@ -82,7 +84,7 @@ const AppHeroes = () => {
                     {heroes.map((hero, i) => {
                         if (hero?.primary_attr === `int`)
                             return(
-                                <div key={i}>
+                                <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id - 1}`}>
                                         <div className="app-heroes__container__hero">
                                             <video loop muted playsInline>
@@ -105,8 +107,8 @@ const AppHeroes = () => {
                     {heroes.map((hero, i) => {
                         if (hero?.primary_attr === `all`)
                             return(
-                                <div key={i}>
-                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                <div key={i} className={`app-heroes__div-cont`}>
+                                    <NavLink to={`/heroes/${hero?.id - 1}`} className={`app-heroes__container__hero-name-link`}>
                                         <div className="app-heroes__container__hero">
                                             <video loop muted playsInline>
                                                 <source src={`/heroes/${hero?.localized_name}.webm`} type="video/webm"/>

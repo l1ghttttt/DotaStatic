@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import './app.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeader from "../app-header/App-header";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 
 const Main = lazy(() => import('../../pages/MainPage'));
 const Hero = lazy(() => import('../../pages/HeroesPage'));
