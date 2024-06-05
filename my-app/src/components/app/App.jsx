@@ -11,14 +11,31 @@ const HeroStats = lazy(() => import('../../pages/HeroStatsPage'));
 const Team = lazy(() => import('../../pages/TeamPage'));
 const Player = lazy(() => import('../../pages/PlayersPage'));
 const PlayerStats = lazy(() => import('../../pages/PlayerStatsPage'));
+const Stats = lazy(() => import('../../pages/AppStatsPage'));
 
 const App = () => {
+    const initialState = {
+        display: true,
+    }
+    const reducer = (state = initialState, action) => {
+        switch (action.type) {
+            case 'TRUE':
+                return {...state, display: true}
+            case 'FALSE':
+                return {...state, display: false}
+            default:
+                return state;
+        }
+    }
+
+    const store = createStore(reducer);
     const fallback = <div>Loading...</div>;
 
     return (
         <div className="app">
+            <Provider store={store}>
             <Router>
-                <AppHeader/>
+                {initialState.display ? <AppHeader/> : null}
                 <Routes>
                     <Route path="/" element={
                         <Suspense fallback={fallback}>
@@ -50,8 +67,14 @@ const App = () => {
                             <PlayerStats />
                         </Suspense>
                     } />
+                    <Route path="/stats" element={
+                        <Suspense fallback={fallback}>
+                            <Stats />
+                        </Suspense>
+                    } />
                 </Routes>
             </Router>
+            </Provider>
         </div>
     );
 };

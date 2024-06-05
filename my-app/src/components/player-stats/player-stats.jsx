@@ -3,7 +3,9 @@ import './player-stats.css';
 import axios from "axios";
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 
-const PlayerStats = ({id}) => {
+const PlayerStats = () => {
+    const {playerId} = useParams();
+    const id = playerId
     const [player, setPlayer] = useState({});
     const [loading, setLoading] = useState(false);
     let statistic
@@ -19,7 +21,7 @@ const PlayerStats = ({id}) => {
                     axios.get(`https://api.opendota.com/api/players/${id}/recentMatches`),
                     axios.get(`https://api.opendota.com/api/players/${id}/peers`),
                     axios.get(`https://api.opendota.com/api/players/${id}/totals`)
-                ])
+                ]);
                 const combinedData = {
                     ...profileRes.data,
                     ...wlRes.data,
@@ -35,10 +37,27 @@ const PlayerStats = ({id}) => {
             }
         };
         getPlayer();
-    }, []);
+    }, [id]);
+
+    console.log(player)
+
+    if (!player[1]) {
+        return (
+            <>
+                <h1 style={{color: `red`, fontSize: `50px`}}>Не найден</h1>
+                <button className="playerStats__button" type="button" onClick={() => {
+                    navigate(-1)
+                }}>
+                    ⬅ Назад
+                </button>
+            </>
+        )
+
+    }
+
 
     if (loading) {
-        return <p style={{ color: `red` }}>Loading...</p>;
+        return <p style={{color: `red`}}>Loading...</p>;
     }
 
     if (player?.totals) {
@@ -87,6 +106,11 @@ const PlayerStats = ({id}) => {
                 navigate(-1)
             }}>
                 ⬅ Назад
+            </button>
+            <button className="playerStats__button-home" type="button" onClick={() => {
+                navigate('/')
+            }}>
+                ⬅ На главную
             </button>
             <div className="playerStats__name">
                 <img
@@ -165,7 +189,8 @@ const PlayerStats = ({id}) => {
                     }
                     return (<div key={i} className="playerStats__friends__friend">
                             <img src={player?.avatarfull} alt="" className="playerStats__friends__friend-ava"/>
-                            <h4 className="playerStats__friends__friend-name"><NavLink to={`/players/${player?.account_id}`}> {player?.personaname} </NavLink></h4>
+                            <h4 className="playerStats__friends__friend-name"><NavLink
+                                to={`/players/${player?.account_id}`}> {player?.personaname} </NavLink></h4>
                             <h4>Игр вместе: {player?.with_games}</h4>
                             <h4>Побед вместе: {player?.win}</h4>
                             <h4>Общий WR: <span

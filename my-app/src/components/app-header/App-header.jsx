@@ -1,9 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import './app-header.css';
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const AppHeader = () => {
-    const heightRef = useRef(null);
+    const display = useSelector((state) => state.display);
     const nodeRef1 = useRef(null);
     const nodeRef2 = useRef(null);
     const nodeRef3 = useRef(null);
@@ -17,11 +18,9 @@ const AppHeader = () => {
     const nodeRef11 = useRef(null);
     const nodeRef12 = useRef(null);
 
-    useEffect(() => {
-        if (heightRef.current!== null) {
-            heightRef.current.style.height = `${window.innerHeight}px`;
-        }
-    }, []);
+    if (!display) {
+        return (``)
+    }
 
     const switchPos = (x, y, z) => {
         nodeRef1.current.style.transform = `translateY(-${y}px)`;
@@ -53,9 +52,9 @@ const AppHeader = () => {
                     </NavLink>
                     <nav className="header__menu">
                         <ul className={`header__menu-list`}>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(200, 75,450)}><NavLink  className={({isActive}) => isActive ? "active" : ''} to={'/heroes'}>Герои</NavLink></a></li>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(400, 150,900)}><NavLink to={'/teams'}>Команды</NavLink></a></li>
-                            <li className={`header__menu-item`}><a className="header__menu-link" onClick={() => switchPos(600, 225,1350)}><NavLink to={'/players'}>Игроки</NavLink></a></li>
+                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(200, 85,450)}><NavLink  className={({isActive}) => isActive ? "active" : ''} to={'/heroes'}>Герои</NavLink></p></li>
+                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(400, 165,900)}><NavLink to={'/teams'}>Команды</NavLink></p></li>
+                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(600, 235,1350)}><NavLink to={'/players'}>Игроки</NavLink></p></li>
                         </ul>
                     </nav>
                     <button className="header__button" type="button">
@@ -64,7 +63,7 @@ const AppHeader = () => {
                 </div>
             </header>
 
-            <div className="wrapper" ref={heightRef}>
+            <div className="wrapper">
                 <div className="wrapper__text">
                     <h2 className="wrapper__text__name">
                         <h2 ref={nodeRef1}>DotaStatic</h2>
