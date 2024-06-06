@@ -16,6 +16,8 @@ const Stats = lazy(() => import('../../pages/AppStatsPage'));
 const App = () => {
     const initialState = {
         display: true,
+        Arrow: false,
+        opacity: true,
     }
     const reducer = (state = initialState, action) => {
         switch (action.type) {
@@ -23,6 +25,14 @@ const App = () => {
                 return {...state, display: true}
             case 'FALSE':
                 return {...state, display: false}
+            case 'ARRTRUE':
+                return {...state, Arrow: true}
+            case 'ARRFALSE':
+                return {...state, Arrow: false}
+            case 'OPATRUE':
+                return {...state, opacity: true}
+            case 'OPAFALSE':
+                return {...state, opacity: false}
             default:
                 return state;
         }

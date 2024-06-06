@@ -4,9 +4,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import TeamsList from "../teams-list/Teams-list";
 import TeamsPagination from "../teams-pagination/teams-pagination";
+import {useDispatch} from "react-redux";
 
 
 function AppTeams() {
+    const dispatch = useDispatch();
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -50,6 +52,15 @@ function AppTeams() {
     const searchHandler = e => {
         setTerm(e.target.value);
     };
+
+    if (loading) {
+        dispatch({type: `ARRFALSE`});
+        return <span style={{position: `absolute`, top: `calc(100% - 200px)`}} className="loader"></span>;
+    }
+    if (!loading) {
+        dispatch({type: `ARRTRUE`});
+        dispatch({type: `OPATRUE`});
+    }
 
     return (
         <main className={"teams"}>

@@ -3,9 +3,10 @@ import './app-players.css';
 import axios from "axios";
 import TeamsPagination from "../teams-pagination/teams-pagination";
 import PlayersList from "../players-list/players-list";
+import {useDispatch} from "react-redux";
 
 const AppPlayers = () => {
-
+    const dispatch = useDispatch();
     const [players, setPlayers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -60,7 +61,14 @@ const AppPlayers = () => {
             }
         }
     }
-    console.log(players);
+    if (loading) {
+        dispatch({type: `ARRFALSE`});
+        return <span style={{position: `absolute`, top: `calc(100% - 200px)`}} className="loader"></span>;
+    }
+    if (!loading) {
+        dispatch({type: `ARRTRUE`});
+        dispatch({type: `OPATRUE`});
+    }
 
     return (
         <main className="players" ref={mainRef}>

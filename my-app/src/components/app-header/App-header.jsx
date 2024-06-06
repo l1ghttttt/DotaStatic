@@ -1,10 +1,12 @@
 import React, {useRef} from 'react';
 import './app-header.css';
 import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import DisappearingElement from "../invisible";
 
 const AppHeader = () => {
     const display = useSelector((state) => state.display);
+    const dispatch = useDispatch();
     const nodeRef1 = useRef(null);
     const nodeRef2 = useRef(null);
     const nodeRef3 = useRef(null);
@@ -39,7 +41,9 @@ const AppHeader = () => {
         nodeRef11.current.style.transform = `translateX(-${z}px)`;
         nodeRef12.current.style.transform = `translateX(-${z}px)`;
     }
-
+    const setOPA = () => {
+        dispatch({type: 'OPAFALSE'});
+    }
     return (
         <>
             <header className="header">
@@ -50,14 +54,24 @@ const AppHeader = () => {
                              className="header__logo"
                              height={80}
                              loading="lazy"
-                             onClick={() => switchPos(0, 0,0)}
+                             onClick={() => {
+                                 switchPos(0, 0, 0)
+                                setOPA()
+                             }}
                         />
                     </NavLink>
                     <nav className="header__menu">
                         <ul className={`header__menu-list`}>
-                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(200, 85,450)}><NavLink  className={({isActive}) => isActive ? "active" : ''} to={'/heroes'}>Герои</NavLink></p></li>
-                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(400, 165,900)}><NavLink to={'/teams'}>Команды</NavLink></p></li>
-                            <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(600, 235,1350)}><NavLink to={'/players'}>Игроки</NavLink></p></li>
+                            <li className={`header__menu-item`}><p className="header__menu-link"
+                                                                   onClick={() => switchPos(200, 85, 450)}><NavLink
+                                className={({isActive}) => isActive ? "active" : ''} to={'/heroes'}>Герои</NavLink></p>
+                            </li>
+                            <li className={`header__menu-item`}><p className="header__menu-link"
+                                                                   onClick={() => switchPos(400, 165, 900)}><NavLink
+                                to={'/teams'}>Команды</NavLink></p></li>
+                            <li className={`header__menu-item`}><p className="header__menu-link"
+                                                                   onClick={() => switchPos(600, 235, 1350)}><NavLink
+                                to={'/players'}>Игроки</NavLink></p></li>
                         </ul>
                     </nav>
                     <button className="header__button" type="button" onClick={() => ToStats()}>
@@ -75,7 +89,8 @@ const AppHeader = () => {
                         <h2 ref={nodeRef4}>Игроки</h2>
                     </h2>
                     <h3 className="wrapper__text__description">
-                        <h3 ref={nodeRef5}>Лучший сайт для просмотра как своей, так и глобальной статистики игры Dota 2</h3>
+                        <h3 ref={nodeRef5}>Лучший сайт для просмотра как своей, так и глобальной статистики игры Dota
+                            2</h3>
                         <h3 ref={nodeRef6}>Все персонажи, можете получить дополнительную информацию, кликнув по ним</h3>
                         <h3 ref={nodeRef7}>Известные киберспортивные коллективы</h3>
                         <h3 ref={nodeRef8}>Профили игроков про-сцены</h3>
@@ -88,6 +103,7 @@ const AppHeader = () => {
                     <img ref={nodeRef12} src="/playersImg.png" alt=""/>
                 </div>
             </div>
+            <DisappearingElement/>
         </>
     );
 };

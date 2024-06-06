@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import './app-heroes.css'
 import axios from "axios";
 import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const AppHeroes = () => {
-
+    const dispatch = useDispatch();
     const [heroes, setHeroes] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -28,7 +29,12 @@ const AppHeroes = () => {
 
 
     if (loading) {
-        return <p style={{color: `red`}}>Loading...</p>;
+        dispatch({type: `ARRFALSE`});
+        return <span style={{position: `absolute`, top: `calc(100% - 200px)`}} className="loader"></span>;
+    }
+    if (!loading) {
+        dispatch({type: `ARRTRUE`});
+        dispatch({type: `OPATRUE`});
     }
 
     return (
