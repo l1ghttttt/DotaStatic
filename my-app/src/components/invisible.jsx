@@ -41,7 +41,7 @@ const DisappearingElement = () => {
     }
 
     return (
-        <div ref={elementRef} style={{ position: 'sticky', bottom: '75px', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', width: '300px', height: '1px', opacity: opacity? 1 : 0, marginBottom: '50px', transitionDuration: `.5s` }}>
+        <div ref={elementRef} style={{ position: 'sticky', bottom: '100px', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', width: '300px', height: '1px', opacity: opacity? 1 : 0, marginBottom: '50px', transitionDuration: `.5s` }}>
             <img src="/ArrowDown.svg" alt="" width={300}/>
         </div>
     );
