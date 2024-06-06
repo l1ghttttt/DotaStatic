@@ -108,7 +108,8 @@ const AppHeroes = () => {
                 <img src="/all.png" alt=""/>
                 <div className="app-heroes__container app-heroes__all">
                     {heroes.map((hero, i) => {
-                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '').toLowerCase
+                        let cleanedName = hero.localized_name.replace(/[_\s-]/g, '')
+                        cleanedName = cleanedName.toLowerCase
                         if (hero?.primary_attr === `all`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
