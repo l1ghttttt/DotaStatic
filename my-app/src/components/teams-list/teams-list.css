@@ -1,0 +1,72 @@
+.teams-list {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  width: 100%;
+}
+.teams-list__card {
+  max-width: 540px;
+  height: 150px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  border: rgba(255, 255, 255, 0.3) 2px solid;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  display: flex;
+  padding: 15px;
+  transition: 0.2s;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.teams-list__card:hover {
+  box-shadow: 0 2px 1px rgb(255, 255, 255);
+}
+.teams-list__card__img {
+  max-width: 128px;
+  max-height: 128px;
+}
+.teams-list__card__rates {
+  width: 128px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.teams-list__card__rates-bar {
+  width: 50px;
+  height: 50px;
+  font-size: 1rem;
+}
+.teams-list__card__rates-winrate__wins {
+  color: rgb(0, 255, 0);
+  font-weight: bold;
+}
+.teams-list__card__rates-winrate__losses {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+.teams-list__card__rates-winrate-WR {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.teams-list__card__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.teams-list__card__description-name {
+  font-size: 1.5rem;
+}
+.teams-list__card__description-tag {
+  font-size: 1.3rem;
+}
+.teams-list__card__description-rating {
+  font-size: 1.1rem;
+}
+
+/*# sourceMappingURL=teams-list.css.map */

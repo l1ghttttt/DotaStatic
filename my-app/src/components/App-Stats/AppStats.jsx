@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './AppStats.css';
+import {useNavigate} from "react-router-dom";
 
 const AppStats = () => {
     const [accountID, setAccountID] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (event) => {
         let value = event.target.value;
@@ -19,10 +21,8 @@ const AppStats = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (accountID.trim()!== '') {
-            localStorage.setItem('playerId', accountID); // Сохраняем ID в localStorage
             window.location.href = `/players/${accountID}`; // Принудительное перенаправление
         }
-
     };
 
     return (
@@ -45,6 +45,9 @@ const AppStats = () => {
                 </div>
                 <button type="submit" className="AppStats__form-button">Отправить</button>
             </form>
+            <button type="submit" className="AppStats__form-button previous" onClick={() => {
+                navigate(-1)
+            }}>Назад</button>
         </main>
     );
 };

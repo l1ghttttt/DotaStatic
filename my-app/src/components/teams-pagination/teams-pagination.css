@@ -1,0 +1,21 @@
+.pagination {
+  color: #adadad;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0;
+  justify-content: center;
+}
+.pagination-block {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20%;
+  background-color: #171717;
+  user-select: none;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=teams-pagination.css.map */

@@ -1,0 +1,123 @@
+.AppStats {
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.AppStats-name {
+  margin-top: 60px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px white;
+  color: white;
+  font-size: 60px;
+  text-align: center;
+}
+.AppStats-description {
+  margin-top: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px white;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+.AppStats__form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 75px;
+  margin-top: 50px;
+  width: 100%;
+}
+.AppStats__form-button {
+  min-height: 50px;
+  padding: 20px 50px;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-family: Montserrat;
+  border-right: 5px white solid;
+  border-left: 5px white solid;
+  border-bottom: 5px rgba(0, 0, 0, 0) solid;
+  border-top: 5px rgba(0, 0, 0, 0) solid;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+.AppStats__form-button:hover {
+  border-bottom: 5px white solid;
+  border-top: 5px white solid;
+  box-shadow: 2px 2px 10px white;
+  text-shadow: 2px 2px 10px white;
+}
+.AppStats__form-button:focus {
+  outline: none;
+  border-bottom: 5px white solid;
+  border-top: 5px white solid;
+  box-shadow: 2px 2px 10px white;
+  text-shadow: 2px 2px 10px white;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #ffffff;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #ffffff, #ffffff);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+.previous {
+  margin-top: 30px;
+}
+
+/*# sourceMappingURL=AppStats.css.map */

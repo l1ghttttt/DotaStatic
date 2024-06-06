@@ -7,7 +7,7 @@ const PlayerStats = () => {
     const {playerId} = useParams();
     const id = playerId
     const [player, setPlayer] = useState({});
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     let statistic
     const navigate = useNavigate();
 
@@ -39,21 +39,21 @@ const PlayerStats = () => {
         getPlayer();
     }, [id]);
 
-    console.log(player)
-
-    if (!player[1]) {
-        return (
-            <>
-                <h1 style={{color: `red`, fontSize: `50px`}}>Не найден</h1>
-                <button className="playerStats__button" type="button" onClick={() => {
-                    navigate(-1)
-                }}>
-                    ⬅ Назад
-                </button>
-            </>
-        )
-
+    if (!loading) {
+        if (!player[1]) {
+            return (
+                <>
+                    <h1 style={{color: `red`, fontSize: `50px`}}>Не найден</h1>
+                    <button className="playerStats__button" type="button" onClick={() => {
+                        navigate(-1)
+                    }}>
+                        ⬅ Назад
+                    </button>
+                </>
+            )
+        }
     }
+
 
 
     if (loading) {

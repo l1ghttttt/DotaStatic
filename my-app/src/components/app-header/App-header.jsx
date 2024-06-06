@@ -21,6 +21,9 @@ const AppHeader = () => {
     if (!display) {
         return (``)
     }
+    const ToStats = () => {
+        window.location.href = `/stats`;
+    };
 
     const switchPos = (x, y, z) => {
         nodeRef1.current.style.transform = `translateY(-${y}px)`;
@@ -57,7 +60,7 @@ const AppHeader = () => {
                             <li className={`header__menu-item`}><p className="header__menu-link" onClick={() => switchPos(600, 235,1350)}><NavLink to={'/players'}>Игроки</NavLink></p></li>
                         </ul>
                     </nav>
-                    <button className="header__button" type="button">
+                    <button className="header__button" type="button" onClick={() => ToStats()}>
                         Моя статистика
                     </button>
                 </div>

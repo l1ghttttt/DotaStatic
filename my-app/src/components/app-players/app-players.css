@@ -1,0 +1,170 @@
+@charset "UTF-8";
+.players {
+  width: 1100px;
+}
+.players__select {
+  height: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.players__select:focus {
+  outline: none;
+}
+.players__select option {
+  color: #000000;
+}
+.players__select option:checked {
+  background-color: #444; /* Темнее фон для выбранного значения */
+  color: #fff; /* Белый цвет текста для выбранного значения */
+}
+.players h3 {
+  font-size: 6rem;
+  color: white;
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 10px white;
+}
+.players form {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  align-items: flex-end;
+  gap: 40px;
+}
+.players__input {
+  width: 30%;
+}
+.players__list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.players__list__card {
+  max-width: 353.33px;
+  display: flex;
+  color: white;
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+  border: rgba(255, 255, 255, 0.3) 2px solid;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+  transition: 0.2s;
+  align-items: center;
+  padding: 15px;
+  gap: 15px;
+}
+.players__list__card:hover {
+  box-shadow: 0 2px 1px rgb(255, 255, 255);
+}
+.players__list__card-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+}
+.players__list__card-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding: 15px 0;
+  gap: 10px;
+}
+.players__list__card-description h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  text-align: center;
+}
+.players__list__card-description__name {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.players__list__card-description__name:link {
+  text-decoration: none;
+}
+.players__list__card-description__name:visited {
+  color: white;
+}
+.players__list__card-description__name:hover {
+  text-decoration: underline;
+}
+.players__list__card-description__other {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  font-size: 0.8rem;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #ffffff;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #ffffff, #ffffff);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=app-players.css.map */
