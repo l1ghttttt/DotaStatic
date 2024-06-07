@@ -43,7 +43,7 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__str">
                     {heroes.map((hero, i) => {
-                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '').toLowerCase
+                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         if (hero?.primary_attr === `str`)
 
                             return(
@@ -66,7 +66,7 @@ const AppHeroes = () => {
                 <img src="/agi.png" alt=""/>
                 <div className="app-heroes__container app-heroes__agi">
                     {heroes.map((hero, i) => {
-                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '').toLowerCase
+                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         if (hero?.primary_attr === `agi`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
@@ -86,7 +86,7 @@ const AppHeroes = () => {
             <div className="app-heroes__div">
                 <div className="app-heroes__container app-heroes__int">
                     {heroes.map((hero, i) => {
-                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '').toLowerCase
+                        const cleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         if (hero?.primary_attr === `int`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
@@ -109,7 +109,6 @@ const AppHeroes = () => {
                 <div className="app-heroes__container app-heroes__all">
                     {heroes.map((hero, i) => {
                         let cleanedName = hero.localized_name.replace(/[_\s-]/g, '')
-                        cleanedName = cleanedName.toLowerCase
                         if (hero?.primary_attr === `all`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
