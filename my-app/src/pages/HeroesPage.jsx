@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 
 const HeroesPage = () => {
     const dispatch = useDispatch();
+    dispatch({type: 'SETSLIDE', payload: '2'})
     dispatch({type: 'TRUE'})
     return (
         <>

@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 const PlayerStatsPage = () => {
     const dispatch = useDispatch();
     dispatch({type: 'FALSE'})
+    dispatch({type: 'SETSLIDE', payload: '4'})
     return (
         <>
             <PlayerStats/>

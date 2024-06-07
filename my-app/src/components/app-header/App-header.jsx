@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import './app-header.css';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,6 +6,7 @@ import DisappearingElement from "../invisible";
 
 const AppHeader = () => {
     const display = useSelector((state) => state.display);
+    const slide = useSelector((state) => state.slide);
     const dispatch = useDispatch();
     const nodeRef1 = useRef(null);
     const nodeRef2 = useRef(null);
@@ -20,6 +21,26 @@ const AppHeader = () => {
     const nodeRef11 = useRef(null);
     const nodeRef12 = useRef(null);
 
+    useEffect(() => {
+        if (nodeRef1.current !== null) {
+            switch (slide) {
+                case `1`:
+                    switchPos(0, 0, 0);
+                    break;
+                case `2`:
+                    switchPos(200, 85, 450);
+                    break;
+                case `3`:
+                    switchPos(400, 165, 900);
+                    break;
+                case `4`:
+                    switchPos(600, 235, 1350);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }, );
     if (!display) {
         return (``)
     }
@@ -41,6 +62,8 @@ const AppHeader = () => {
         nodeRef11.current.style.transform = `translateX(-${z}px)`;
         nodeRef12.current.style.transform = `translateX(-${z}px)`;
     }
+
+
     const setOPA = () => {
         dispatch({type: 'OPAFALSE'});
     }

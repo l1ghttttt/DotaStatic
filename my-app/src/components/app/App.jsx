@@ -18,8 +18,10 @@ const App = () => {
         display: true,
         Arrow: false,
         opacity: true,
+        slide: `1`,
     }
     const reducer = (state = initialState, action) => {
+        console.log(state)
         switch (action.type) {
             case 'TRUE':
                 return {...state, display: true}
@@ -33,6 +35,8 @@ const App = () => {
                 return {...state, opacity: true}
             case 'OPAFALSE':
                 return {...state, opacity: false}
+            case 'SETSLIDE':
+                return {...state, slide: action.payload}
             default:
                 return state;
         }
@@ -45,7 +49,7 @@ const App = () => {
         <div className="app">
             <Provider store={store}>
             <Router>
-                {initialState.display ? <AppHeader/> : null}
+                {initialState.display ? <AppHeader slide={initialState.slide}/> : null}
                 <Routes>
                     <Route path="/" element={
                         <Suspense fallback={fallback}>

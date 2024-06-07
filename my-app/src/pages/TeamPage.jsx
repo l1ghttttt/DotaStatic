@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 const TeamPage = () => {
     const dispatch = useDispatch();
     dispatch({type: 'TRUE'})
+    dispatch({type: 'SETSLIDE', payload: '3'})
     return (
         <>
             <AppTeams/>
