@@ -72,7 +72,7 @@ const AppHeroes = () => {
                         if (hero?.primary_attr === `agi`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                    <NavLink to={`/heroes/${hero?.id}`}>
                                         <div className="app-heroes__container__hero">
                                             <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
                                         </div>
@@ -93,7 +93,7 @@ const AppHeroes = () => {
                         if (hero?.primary_attr === `int`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id - 1}`}>
+                                    <NavLink to={`/heroes/${hero?.id}`}>
                                         <div className="app-heroes__container__hero">
                                             <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
                                         </div>
@@ -116,7 +116,7 @@ const AppHeroes = () => {
                         if (hero?.primary_attr === `all`)
                             return(
                                 <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id - 1}`} className={`app-heroes__container__hero-name-link`}>
+                                    <NavLink to={`/heroes/${hero?.id}`} className={`app-heroes__container__hero-name-link`}>
                                         <div className="app-heroes__container__hero">
                                             <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
                                         </div>

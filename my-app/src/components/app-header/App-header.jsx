@@ -79,7 +79,7 @@ const AppHeader = () => {
                              loading="lazy"
                              onClick={() => {
                                  switchPos(0, 0, 0)
-                                setOPA()
+                                 setOPA()
                              }}
                         />
                     </NavLink>
