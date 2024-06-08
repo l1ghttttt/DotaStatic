@@ -10,7 +10,6 @@ const AppNews = () => {
             contRef.current.style.height = `${window.innerHeight}px`;
         }
     }, []);
-
     return (
         <main className="main">
             <h2 className="main__name">Лента новостей</h2>

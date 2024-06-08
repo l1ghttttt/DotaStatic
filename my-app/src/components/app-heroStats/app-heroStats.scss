@@ -146,3 +146,31 @@
 .herostats__main__info-roles-role {
   font-size: 1rem;
 }
+
+.loading-cont {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-2 {
+  width: 300px;
+  height: 300px;
+  border: 20px solid;
+  border-color: #ffffff transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

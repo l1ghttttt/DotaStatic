@@ -47,7 +47,9 @@ const AppHeroStats = () => {
     }, [hero]);
 
     if (loading) {
-        return <p style={{color: `red`}}>Loading...</p>;
+        return <div className="loading-cont">
+            <span className="loader-2"></span>
+        </div>;
     }
 
     switch (selectedHero?.primary_attr) {

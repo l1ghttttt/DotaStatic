@@ -57,7 +57,12 @@ const PlayerStats = () => {
 
 
     if (loading) {
-        return <p style={{color: `red`}}>Loading...</p>;
+
+        return (
+            <div className="loading-cont">
+                <span className="loader-3"></span>
+            </div>
+        );
     }
 
     if (player?.totals) {
