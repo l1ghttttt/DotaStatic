@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import * as React from "react";
 import './AppStats.css';
 import {useNavigate} from "react-router-dom";
 
 const AppStats = () => {
-    const [accountID, setAccountID] = useState('');
+    const [accountID, setAccountID] = React.useState('');
     const navigate = useNavigate();
 
     const handleInputChange = (event) => {
@@ -16,7 +16,6 @@ const AppStats = () => {
         // Обновляем состояние с новым значением
         setAccountID(value);
     };
-
 
     const handleSubmit = (event) => {
         event.preventDefault();

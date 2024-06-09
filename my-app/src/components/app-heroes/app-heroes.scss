@@ -1,12 +1,12 @@
 .app-heroes {
-  margin: 30px 0;
+  margin: 100px 0;
   width: 100%;
-  padding: 40px 40px;
+  padding: 0 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: auto;
   color: #ffffff;
-  gap: 40px;
+  gap: 50px;
   justify-content: center;
   &__div {
     width: auto;

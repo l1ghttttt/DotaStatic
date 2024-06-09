@@ -1,8 +1,13 @@
-import React from 'react';
+import * as React from "react";
 import './players-list.css'
 import {NavLink} from "react-router-dom";
 
-const PlayersList = ({players, loading}) => {
+interface PlayersListProps {
+    players: Array<any>;
+    loading: boolean;
+}
+
+const PlayersList: React.FC<PlayersListProps> = ({players, loading}) => {
 
     if (loading) {
         return (

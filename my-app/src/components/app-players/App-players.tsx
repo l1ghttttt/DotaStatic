@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useState, useRef, useEffect} from "react";
+import * as React from "react";
 import './app-players.css';
 import axios from "axios";
-import TeamsPagination from "../teams-pagination/teams-pagination";
-import PlayersList from "../players-list/players-list";
+import PlayersList from "../players-list/Players-list";
 import {useDispatch} from "react-redux";
+import TeamsPagination from "../teams-pagination/Teams-pagination";
 
 const AppPlayers = () => {
     const dispatch = useDispatch();

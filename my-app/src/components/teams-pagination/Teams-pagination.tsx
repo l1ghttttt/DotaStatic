@@ -1,9 +1,15 @@
-import React from 'react';
+import * as React from "react";
 import './teams-pagination.css'
+interface ITeamsPaginationProps {
+    teamsPerPage: number;
+    totalTeams: number;
+    currentPage: number;
+    Paginate: (pageNumber: number) => void
+}
 
-const TeamsPagination = ({teamsPerPage, totalTeams, Paginate, currentPage}) => {
+const TeamsPagination: React.FC<ITeamsPaginationProps>  = ({teamsPerPage, totalTeams, Paginate, currentPage}) => {
 
-    const pageNumbers = []
+    const pageNumbers: Array<number> = []
 
     for (let i = 1; i <= Math.ceil(totalTeams / teamsPerPage); i++) {
         pageNumbers.push(i)

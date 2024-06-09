@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import * as React from "react";
 import './app-heroes.css'
 import axios from "axios";
 import {NavLink} from "react-router-dom";
@@ -14,7 +15,7 @@ const AppHeroes = () => {
             setLoading(true);
             try {
                 const res = await axios.get('https://api.opendota.com/api/heroStats');
-                const sortedHeroes = res.data.sort((a, b) => a.localized_name.localeCompare(b.localized_name));
+                const sortedHeroes = res.data.sort((a:any, b:any) => a.localized_name.localeCompare(b.localized_name));
                 setHeroes(sortedHeroes);
             } catch (error) {
                 console.error("Ошибка при получении команд:", error);
@@ -24,9 +25,6 @@ const AppHeroes = () => {
         };
         getHeroes();
     }, []);
-
-    console.log(heroes)
-
 
     if (loading) {
         dispatch({type: `ARRFALSE`});

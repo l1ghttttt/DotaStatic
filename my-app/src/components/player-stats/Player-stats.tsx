@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import * as React from "react";
 import './player-stats.css';
 import axios from "axios";
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 
-const PlayerStats = () => {
+interface Player {
+    [key: string]: any; // Это позволяет любым свойствам быть допустимыми
+}
+interface Statistic {
+    [key: string]: any; // Это позволяет любым свойствам быть допустимыми
+}
+
+const PlayerStats: React.FC = () => {
     const {playerId} = useParams();
     const id = playerId
-    const [player, setPlayer] = useState({});
-    const [loading, setLoading] = useState(true);
-    let statistic
+    const [player, setPlayer] = React.useState<Player | undefined>(undefined);
+    const [loading, setLoading] = React.useState(true);
+    let statistic:Statistic = {}
     const navigate = useNavigate();
 
-    useEffect(() => {
+    React.useEffect(() => {
         const getPlayer = async () => {
             setLoading(true);
             try {
@@ -42,19 +49,13 @@ const PlayerStats = () => {
     if (!loading) {
         if (!player[1]) {
             return (
-                <>
+                <div>
                     <h1 style={{color: `red`, fontSize: `50px`}}>Не найден</h1>
-                    <button className="playerStats__button" type="button" onClick={() => {
-                        navigate(-1)
-                    }}>
-                        ⬅ Назад
-                    </button>
-                </>
+                    <button className="playerStats__button" type="button" onClick={() => {navigate(-1)}}>⬅ Назад</button>
+                </div>
             )
         }
     }
-
-
 
     if (loading) {
 
@@ -104,6 +105,8 @@ const PlayerStats = () => {
     } else {
         titan = null
     }
+
+    console.log(player)
 
     return (
         <main className="playerStats">

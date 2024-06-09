@@ -3,11 +3,11 @@ import './app-teams.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import TeamsList from "../teams-list/Teams-list";
-import TeamsPagination from "../teams-pagination/teams-pagination";
+import TeamsPagination from "../teams-pagination/Teams-pagination";
 import {useDispatch} from "react-redux";
 
 
-function AppTeams() {
+const AppTeams = () => {
     const dispatch = useDispatch();
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(false);

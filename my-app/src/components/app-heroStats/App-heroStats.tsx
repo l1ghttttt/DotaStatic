@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import * as React from "react";
 import './app-heroStats.css';
 import axios from "axios";
-import ProgressBar from "../progress-bar/progress-bar";
+import ProgressBar from "../progress-bar/Progress-bar";
 import {useNavigate, useParams} from "react-router-dom";
 
 const AppHeroStats = () => {
     const [hero,setHero] = useState([]);
     const [loading, setLoading] = useState(true);
     const {heroId} = useParams();
-    const id = heroId
     let borderStr = 0
     let borderAgi = 0
     let borderInt = 0
     let damageBonus = 0
-    let typeAttack
+    let typeAttack:string
     const navigate = useNavigate();
     const [selectedHero, setSelectedHero] = useState(null);
 

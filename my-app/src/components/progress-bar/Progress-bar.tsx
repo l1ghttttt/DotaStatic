@@ -1,11 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+
+import * as React from "react";
 import './progress-bar.css';
 
-const ProgressBar = ({ valueNow, minValue, maxValue }) => {
-const progressBarRef = useRef(null);
+interface ProgressBarProps {
+    valueNow: number;
+    minValue: number;
+    maxValue: number;
+}
+
+const ProgressBar: React.FC<ProgressBarProps> = ({ valueNow, minValue, maxValue }) => {
+const progressBarRef = React.useRef(null);
 
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (progressBarRef.current !== null) {
             const progressBar = progressBarRef.current;
             const percentage = ((valueNow - minValue) / (maxValue - minValue)) * 100;

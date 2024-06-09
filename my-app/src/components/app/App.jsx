@@ -21,7 +21,6 @@ const App = () => {
         slide: `1`,
     }
     const reducer = (state = initialState, action) => {
-        console.log(state)
         switch (action.type) {
             case 'TRUE':
                 return {...state, display: true}

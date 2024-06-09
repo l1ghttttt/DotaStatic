@@ -1,12 +1,14 @@
-import React, {useRef, useEffect} from 'react';
+import {useRef, useEffect} from 'react';
+import * as React from "react";
 import './app-header.css';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import DisappearingElement from "../invisible";
+import DisappearingElement from "../../components/app-arrow/invisible"
 
 const AppHeader = () => {
     const display = useSelector((state) => state.display);
     const slide = useSelector((state) => state.slide);
+
     const dispatch = useDispatch();
     const nodeRef1 = useRef(null);
     const nodeRef2 = useRef(null);

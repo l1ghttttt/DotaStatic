@@ -1,8 +1,13 @@
-import React from 'react';
+import * as React from "react";
 import './teams-list.css'
-import ProgressBar from "../progress-bar/progress-bar";
+import ProgressBar from "../progress-bar/Progress-bar";
 
-const TeamsList = ({teams, loading}) => {
+interface TeamsListProps {
+    teams: Array<any>;
+    loading: boolean;
+}
+
+const TeamsList: React.FC<TeamsListProps> = ({teams, loading}) => {
 
     if (loading) {
         return (
