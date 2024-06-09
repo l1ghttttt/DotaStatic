@@ -1,20 +1,28 @@
 .app-heroes {
   margin: 30px 0;
-  width: 1100px;
-  height: auto;
-  grid-template-rows: repeat(4, 1fr);
+  width: 100%;
+  padding: 40px 40px;
   display: grid;
-  grid-row-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  height: auto;
   color: #ffffff;
+  gap: 40px;
+  justify-content: center;
 }
 .app-heroes__div {
+  width: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 35px;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  height: auto;
+  border-radius: 20px;
 }
-.app-heroes__div img {
-  width: 160px;
+.app-heroes__div-cont {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .app-heroes__div-cont a:link {
   text-decoration: none;
@@ -28,27 +36,23 @@
   text-decoration: none;
 }
 .app-heroes__container {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
-  border: rgba(255, 255, 255, 0.3) 2px solid;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
-  height: auto;
   display: flex;
   flex-wrap: wrap;
-  padding: 15px;
-  transition: 1s;
-  border-radius: 20px;
-  gap: 15px;
-  width: 894px;
+  justify-content: space-around;
+  row-gap: 20px;
 }
 .app-heroes__container__hero {
-  width: 110px;
-  height: 110px;
   overflow: hidden;
-  border-radius: 10px;
   transform: scale(1);
   transition: 0.2s;
   position: relative;
+  display: flex;
+  justify-content: center;
+}
+.app-heroes__container__hero-image {
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
 }
 .app-heroes__container__hero-name {
   font-size: 13px;
@@ -62,9 +66,37 @@
   transform: scale(2);
   z-index: 2;
 }
-.app-heroes__container video {
-  height: 100%;
-  width: 100%;
+
+.app-heroes__str {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+  border: rgba(255, 0, 0, 0.3) 2px solid;
+  box-shadow: 0 4px 16px rgba(255, 0, 0, 0.8);
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.app-heroes__agi {
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.3), rgba(0, 0, 0, 0.1));
+  border: rgba(0, 255, 0, 0.3) 2px solid;
+  box-shadow: 0 4px 16px rgba(0, 255, 0, 0.8);
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.app-heroes__int {
+  background: linear-gradient(135deg, rgba(0, 0, 255, 0.3), rgba(0, 0, 0, 0.1));
+  border: rgba(0, 0, 255, 0.3) 2px solid;
+  box-shadow: 0 4px 16px rgba(0, 0, 255, 0.8);
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.app-heroes__all {
+  background: linear-gradient(135deg, rgba(255, 255, 0, 0.3), rgba(0, 0, 0, 0.1));
+  border: rgba(255, 255, 0, 0.3) 2px solid;
+  box-shadow: 0 4px 16px rgba(255, 255, 0, 0.8);
+  padding: 20px 0;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=app-heroes.css.map */

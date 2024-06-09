@@ -51,7 +51,7 @@ const AppHeroes = () => {
                                 <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id}`}>
                                         <div className="app-heroes__container__hero">
-                                            <img src= {`/icons/${cleanedName}.png`} alt="" height={110} />
+                                            <img src= {`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
                                         </div>
                                         <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
                                     </NavLink>
@@ -59,12 +59,9 @@ const AppHeroes = () => {
                             )
                     })}
                 </div>
-
-                <img src="/strength.png" alt=""/>
             </div>
 
             <div className="app-heroes__div">
-                <img src="/agi.png" alt=""/>
                 <div className="app-heroes__container app-heroes__agi">
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
@@ -74,7 +71,7 @@ const AppHeroes = () => {
                                 <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id}`}>
                                         <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
+                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
                                         </div>
                                         <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
                                     </NavLink>
@@ -95,7 +92,7 @@ const AppHeroes = () => {
                                 <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id}`}>
                                         <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
+                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
                                         </div>
                                         <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
                                     </NavLink>
@@ -104,11 +101,9 @@ const AppHeroes = () => {
                     })
                     }
                 </div>
-                <img src="/int.png" alt=""/>
             </div>
 
             <div className="app-heroes__div">
-                <img src="/all.png" alt=""/>
                 <div className="app-heroes__container app-heroes__all">
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
@@ -118,7 +113,7 @@ const AppHeroes = () => {
                                 <div key={i} className={`app-heroes__div-cont`}>
                                     <NavLink to={`/heroes/${hero?.id}`} className={`app-heroes__container__hero-name-link`}>
                                         <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" height={110}/>
+                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
                                         </div>
                                         <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
                                     </NavLink>
