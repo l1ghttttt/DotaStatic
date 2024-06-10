@@ -1,9 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
+import * as React from "react";
 import './app.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeader from "../app-header/App-header";
-import {createStore} from "redux";
 import {Provider} from "react-redux";
+import { store } from '../store/store';
 
 const Main = lazy(() => import('../../pages/MainPage'));
 const Hero = lazy(() => import('../../pages/HeroesPage'));
@@ -14,41 +15,19 @@ const PlayerStats = lazy(() => import('../../pages/PlayerStatsPage'));
 const Stats = lazy(() => import('../../pages/AppStatsPage'));
 
 const App = () => {
+    const fallback = <div>Loading...</div>;
     const initialState = {
         display: true,
         Arrow: false,
         opacity: true,
         slide: `1`,
     }
-    const reducer = (state = initialState, action) => {
-        switch (action.type) {
-            case 'TRUE':
-                return {...state, display: true}
-            case 'FALSE':
-                return {...state, display: false}
-            case 'ARRTRUE':
-                return {...state, Arrow: true}
-            case 'ARRFALSE':
-                return {...state, Arrow: false}
-            case 'OPATRUE':
-                return {...state, opacity: true}
-            case 'OPAFALSE':
-                return {...state, opacity: false}
-            case 'SETSLIDE':
-                return {...state, slide: action.payload}
-            default:
-                return state;
-        }
-    }
-
-    const store = createStore(reducer);
-    const fallback = <div>Loading...</div>;
 
     return (
         <div className="app">
             <Provider store={store}>
             <Router>
-                {initialState.display ? <AppHeader slide={initialState.slide}/> : null}
+                {initialState.display ? <AppHeader/> : null}
                 <Routes>
                     <Route path="/" element={
                         <Suspense fallback={fallback}>

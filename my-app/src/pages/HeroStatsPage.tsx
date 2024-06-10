@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../src/components/app-heroStats/app-heroStats.css'
 import AppHeroStats from "../components/app-heroStats/App-heroStats";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../hooks/redux";
 
 const HeroStatsPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     dispatch({type: 'FALSE'})
     dispatch({type: 'SETSLIDE', payload: '2'})
     return (

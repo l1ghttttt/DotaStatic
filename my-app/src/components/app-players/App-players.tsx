@@ -3,11 +3,11 @@ import * as React from "react";
 import './app-players.css';
 import axios from "axios";
 import PlayersList from "../players-list/Players-list";
-import {useDispatch} from "react-redux";
 import TeamsPagination from "../teams-pagination/Teams-pagination";
+import {useAppDispatch} from "../../hooks/redux";
 
 const AppPlayers = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     const [players, setPlayers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true);

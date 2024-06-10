@@ -3,10 +3,10 @@ import * as React from "react";
 import './app-heroes.css'
 import axios from "axios";
 import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../../hooks/redux";
 
 const AppHeroes = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     const [heroes, setHeroes] = useState([]);
     const [loading, setLoading] = useState(true);
 

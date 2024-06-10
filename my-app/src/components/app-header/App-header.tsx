@@ -2,14 +2,14 @@ import {useRef, useEffect} from 'react';
 import * as React from "react";
 import './app-header.css';
 import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import DisappearingElement from "../../components/app-arrow/invisible"
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 
-const AppHeader = () => {
-    const display = useSelector((state) => state.display);
-    const slide = useSelector((state) => state.slide);
+const AppHeader:React.FC = () => {
+    const display = useAppSelector((state) => state.display);
+    const slide = useAppSelector((state) => state.slide);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     const nodeRef1 = useRef(null);
     const nodeRef2 = useRef(null);
     const nodeRef3 = useRef(null);
@@ -43,9 +43,11 @@ const AppHeader = () => {
             }
         }
     }, );
+
     if (!display) {
-        return (``)
+        return null
     }
+
     const ToStats = () => {
         window.location.href = `/stats`;
     };

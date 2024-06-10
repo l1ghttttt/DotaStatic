@@ -1,9 +1,9 @@
 import React from 'react';
 import AppStats from "../components/App-Stats/AppStats";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../hooks/redux";
 
 const AppStatsPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     dispatch({type: 'FALSE'})
     return (
         <AppStats/>

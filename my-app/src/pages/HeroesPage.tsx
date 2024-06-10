@@ -1,10 +1,10 @@
 import React from 'react';
 import AppHeroes from "../components/app-heroes/App-heroes";
 import '../../src/components/app-heroes/app-heroes.css'
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../hooks/redux";
 
 const HeroesPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     dispatch({type: 'SETSLIDE', payload: '2'})
     dispatch({type: 'TRUE'})
     return (

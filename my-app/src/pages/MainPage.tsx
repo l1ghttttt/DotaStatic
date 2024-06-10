@@ -1,10 +1,10 @@
 import React from 'react';
 import AppNews from "../components/app-news/App-news";
 import '../../src/components/app-news/app-news.css'
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../hooks/redux";
 
 const MainPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     dispatch({type: 'TRUE'})
     dispatch({type: 'SETSLIDE', payload: '1'})
     return (

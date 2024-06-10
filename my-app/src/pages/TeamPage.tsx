@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../src/components/app-teams/app-teams.css'
 import AppTeams from "../components/app-teams/App-teams";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../hooks/redux";
 
 const TeamPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     dispatch({type: 'TRUE'})
     dispatch({type: 'SETSLIDE', payload: '3'})
     return (

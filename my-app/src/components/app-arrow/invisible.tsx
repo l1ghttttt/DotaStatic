@@ -1,13 +1,14 @@
 import {useEffect, useRef} from 'react';
 import * as React from "react";
 import { TweenMax } from 'gsap';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../hooks/redux";
 
 const DisappearingElement = () => {
     const dispatch = useDispatch();
     const elementRef = useRef(null);
-    const display = useSelector((state) => state.Arrow);
-    const opacity = useSelector((state) => state.opacity);
+    const display = useAppSelector((state) => state.Arrow);
+    const opacity = useAppSelector((state) => state.opacity);
 
     useEffect(() => {
         const disappearingElement = elementRef.current;
