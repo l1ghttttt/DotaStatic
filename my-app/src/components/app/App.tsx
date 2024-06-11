@@ -24,7 +24,7 @@ const App = () => {
     }
 
     return (
-        <div className="app">
+        <div className="app">Я
             <Provider store={store}>
             <Router>
                 {initialState.display ? <AppHeader/> : null}

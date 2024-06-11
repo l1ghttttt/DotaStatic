@@ -9,6 +9,7 @@ const DisappearingElement = () => {
     const elementRef = useRef(null);
     const display = useAppSelector((state) => state.Arrow);
     const opacity = useAppSelector((state) => state.opacity);
+    //let observer = new IntersectionObserver()
 
     useEffect(() => {
         const disappearingElement = elementRef.current;

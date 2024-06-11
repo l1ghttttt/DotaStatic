@@ -11,6 +11,31 @@ const AppNews = () => {
             contRef.current.style.height = `${window.innerHeight}px`;
         }
     }, []);
+    useEffect(() => {
+        if (!contRef ||!contRef.current) return
+
+        const observerOptions = {
+            root: null, // Использует viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Срабатывает, когда 50% элемента видны
+        };
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (contRef.current) {
+                    contRef.current.style.transform = "translateX(0px)";
+                    contRef.current.style.opacity = "1";
+                }
+            }
+        }, observerOptions);
+        if (contRef.current) {
+            observer.observe(contRef.current);
+        }
+
+        return () => {
+            observer.disconnect()
+        }
+    }, []);
     return (
         <main className="main">
             <h2 className="main__name">Лента новостей</h2>

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import * as React from "react";
 import './app-heroes.css'
 import axios from "axios";
@@ -9,13 +9,17 @@ const AppHeroes = () => {
     const dispatch = useAppDispatch()
     const [heroes, setHeroes] = useState([]);
     const [loading, setLoading] = useState(true);
+    const strRef = useRef(null)
+    const agiRef = useRef(null);
+    const intRef = useRef(null);
+    const allRef = useRef(null);
 
     useEffect(() => {
         const getHeroes = async () => {
             setLoading(true);
             try {
                 const res = await axios.get('https://api.opendota.com/api/heroStats');
-                const sortedHeroes = res.data.sort((a:any, b:any) => a.localized_name.localeCompare(b.localized_name));
+                const sortedHeroes = res.data.sort((a, b) => a.localized_name.localeCompare(b.localized_name));
                 setHeroes(sortedHeroes);
             } catch (error) {
                 console.error("Ошибка при получении команд:", error);
@@ -25,6 +29,7 @@ const AppHeroes = () => {
         };
         getHeroes();
     }, []);
+
 
     if (loading) {
         dispatch({type: `ARRFALSE`});
@@ -39,7 +44,7 @@ const AppHeroes = () => {
         <div className="app-heroes">
 
             <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__str">
+                <div className="app-heroes__container app-heroes__str" ref={strRef}>
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         const cleanedName = UpcleanedName.toLowerCase()
@@ -60,7 +65,7 @@ const AppHeroes = () => {
             </div>
 
             <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__agi">
+                <div className="app-heroes__container app-heroes__agi" ref={agiRef}>
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         const cleanedName = UpcleanedName.toLowerCase()
@@ -81,7 +86,7 @@ const AppHeroes = () => {
             </div>
 
             <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__int">
+                <div className="app-heroes__container app-heroes__int" ref={intRef}>
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         const cleanedName = UpcleanedName.toLowerCase()
@@ -102,7 +107,7 @@ const AppHeroes = () => {
             </div>
 
             <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__all">
+                <div className="app-heroes__container app-heroes__all" ref={allRef}>
                     {heroes.map((hero, i) => {
                         const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
                         const cleanedName = UpcleanedName.toLowerCase()
