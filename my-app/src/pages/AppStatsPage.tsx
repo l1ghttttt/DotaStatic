@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react";
 import AppStats from "../components/App-Stats/AppStats";
 import {useAppDispatch} from "../hooks/redux";
 

@@ -208,6 +208,26 @@ svg * {
   gap: 50px;
   justify-content: center;
 }
+.app-heroes__text {
+  overflow: hidden;
+  margin-bottom: 50px;
+  height: 120px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.app-heroes__text h3 {
+  font-size: 6rem;
+  color: white;
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  text-shadow: 2px 2px 10px white;
+  transform: translateY(200px);
+  opacity: 0;
+  transition-duration: 0.2s;
+  transition-delay: 0.2s;
+}
 @media (max-width: 767px) {
   .app-heroes {
     width: 100vw;

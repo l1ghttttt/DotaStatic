@@ -267,6 +267,7 @@ svg * {
 @media (max-width: 767px) {
   .herostats__name {
     margin-top: 20px;
+    text-align: center;
   }
 }
 .herostats__main {
@@ -299,6 +300,11 @@ svg * {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+@media (max-width: 767px) {
+  .herostats__main__info {
+    align-items: center;
+  }
 }
 .herostats__main__info__diagram {
   display: flex;

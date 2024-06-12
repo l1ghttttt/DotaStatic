@@ -23,7 +23,7 @@ const AppNews = () => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 if (contRef.current) {
-                    contRef.current.style.transform = "translateX(0px)";
+                    contRef.current.style.transform = "matrix(1, 0, 0, 1, 0, 0)";
                     contRef.current.style.opacity = "1";
                 }
             }

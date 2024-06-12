@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from "react";
 import '../../src/components/player-stats/player-stats.css'
-import PlayerStats from "../components/player-stats/Player-stats.tsx";
+import PlayerStats from "../components/player-stats/Player-stats";
 import {useAppDispatch} from "../hooks/redux";
 
 const PlayerStatsPage = () => {
@@ -8,9 +8,7 @@ const PlayerStatsPage = () => {
     dispatch({type: 'FALSE'})
     dispatch({type: 'SETSLIDE', payload: '4'})
     return (
-        <>
-            <PlayerStats/>
-        </>
+        <PlayerStats/>
     );
 };
 

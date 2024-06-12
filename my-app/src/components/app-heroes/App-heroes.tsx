@@ -13,6 +13,8 @@ const AppHeroes = () => {
     const agiRef = useRef(null);
     const intRef = useRef(null);
     const allRef = useRef(null);
+    const heroRef = useRef(null);
+    const textRef = useRef(null);
 
     useEffect(() => {
         const getHeroes = async () => {
@@ -74,9 +76,35 @@ const AppHeroes = () => {
     }, [loading]);
 
 
+    useEffect(() => {
+        if (!textRef ||!textRef.current) return
+
+        const ObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1
+        };
+
+        const Observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (heroRef.current) {
+                    heroRef.current.style.transform = "translateY(0px)";
+                    heroRef.current.style.opacity = "1";
+                }
+            }
+        }, ObserverOptions);
+        if (textRef.current) {
+            Observer.observe(textRef.current);
+        }
+
+        return () => {
+            Observer.disconnect()
+        }
+    }, [loading]);
+
     if (loading) {
         dispatch({type: `ARRFALSE`});
-        return <span style={{position: `absolute`, top: `calc(100% - 200px)`}} className="loader"></span>;
+        return <span style={{position: `absolute`, top: `calc(100% - 100px)`}} className="loader"></span>;
     }
     if (!loading) {
         dispatch({type: `ARRTRUE`});
@@ -84,93 +112,102 @@ const AppHeroes = () => {
     }
 
     return (
-        <div className="app-heroes">
-
-            <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__str" ref={strRef}>
-                    {heroes.map((hero, i) => {
-                        const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
-                        const cleanedName = UpcleanedName.toLowerCase()
-                        if (hero?.primary_attr === `str`)
-
-                            return(
-                                <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id}`}>
-                                        <div className="app-heroes__container__hero">
-                                            <img src= {`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
-                                        </div>
-                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
-                                    </NavLink>
-                                </div>
-                            )
-                    })}
-                </div>
+        <main>
+            <div className={'app-heroes__text'} ref={textRef}>
+                <h3 className={"teams__name"} ref={heroRef}>Heroes</h3>
             </div>
+            <div className="app-heroes">
+                <div className="app-heroes__div">
+                    <div className="app-heroes__container app-heroes__str" ref={strRef}>
+                        {heroes.map((hero, i) => {
+                            const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
+                            const cleanedName = UpcleanedName.toLowerCase()
+                            if (hero?.primary_attr === `str`)
 
-            <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__agi" ref={agiRef}>
-                    {heroes.map((hero, i) => {
-                        const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
-                        const cleanedName = UpcleanedName.toLowerCase()
-                        if (hero?.primary_attr === `agi`)
-                            return(
-                                <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id}`}>
-                                        <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
-                                        </div>
-                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
-                                    </NavLink>
-                                </div>
-                            )
-                    })
-                    }
+                                return (
+                                    <div key={i} className={`app-heroes__div-cont`}>
+                                        <NavLink to={`/heroes/${hero?.id}`}>
+                                            <div className="app-heroes__container__hero">
+                                                <img src={`/icons/${cleanedName}.png`} alt=""
+                                                     className={`app-heroes__container__hero-image`}/>
+                                            </div>
+                                            <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                        </NavLink>
+                                    </div>
+                                )
+                        })}
+                    </div>
                 </div>
-            </div>
 
-            <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__int" ref={intRef}>
-                    {heroes.map((hero, i) => {
-                        const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
-                        const cleanedName = UpcleanedName.toLowerCase()
-                        if (hero?.primary_attr === `int`)
-                            return(
-                                <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id}`}>
-                                        <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
-                                        </div>
-                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
-                                    </NavLink>
-                                </div>
-                            )
-                    })
-                    }
+                <div className="app-heroes__div">
+                    <div className="app-heroes__container app-heroes__agi" ref={agiRef}>
+                        {heroes.map((hero, i) => {
+                            const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
+                            const cleanedName = UpcleanedName.toLowerCase()
+                            if (hero?.primary_attr === `agi`)
+                                return (
+                                    <div key={i} className={`app-heroes__div-cont`}>
+                                        <NavLink to={`/heroes/${hero?.id}`}>
+                                            <div className="app-heroes__container__hero">
+                                                <img src={`/icons/${cleanedName}.png`} alt=""
+                                                     className={`app-heroes__container__hero-image`}/>
+                                            </div>
+                                            <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                        </NavLink>
+                                    </div>
+                                )
+                        })
+                        }
+                    </div>
                 </div>
-            </div>
 
-            <div className="app-heroes__div">
-                <div className="app-heroes__container app-heroes__all" ref={allRef}>
-                    {heroes.map((hero, i) => {
-                        const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
-                        const cleanedName = UpcleanedName.toLowerCase()
-                        if (hero?.primary_attr === `all`)
-                            return(
-                                <div key={i} className={`app-heroes__div-cont`}>
-                                    <NavLink to={`/heroes/${hero?.id}`} className={`app-heroes__container__hero-name-link`}>
-                                        <div className="app-heroes__container__hero">
-                                            <img src={`/icons/${cleanedName}.png`} alt="" className={`app-heroes__container__hero-image`}/>
-                                        </div>
-                                        <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
-                                    </NavLink>
-                                </div>
-                            )
-                    })
-                    }
+                <div className="app-heroes__div">
+                    <div className="app-heroes__container app-heroes__int" ref={intRef}>
+                        {heroes.map((hero, i) => {
+                            const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
+                            const cleanedName = UpcleanedName.toLowerCase()
+                            if (hero?.primary_attr === `int`)
+                                return (
+                                    <div key={i} className={`app-heroes__div-cont`}>
+                                        <NavLink to={`/heroes/${hero?.id}`}>
+                                            <div className="app-heroes__container__hero">
+                                                <img src={`/icons/${cleanedName}.png`} alt=""
+                                                     className={`app-heroes__container__hero-image`}/>
+                                            </div>
+                                            <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                        </NavLink>
+                                    </div>
+                                )
+                        })
+                        }
+                    </div>
                 </div>
-            </div>
 
-        </div>
+                <div className="app-heroes__div">
+                    <div className="app-heroes__container app-heroes__all" ref={allRef}>
+                        {heroes.map((hero, i) => {
+                            const UpcleanedName = hero.localized_name.replace(/[_\s-]/g, '')
+                            const cleanedName = UpcleanedName.toLowerCase()
+                            if (hero?.primary_attr === `all`)
+                                return (
+                                    <div key={i} className={`app-heroes__div-cont`}>
+                                        <NavLink to={`/heroes/${hero?.id}`}
+                                                 className={`app-heroes__container__hero-name-link`}>
+                                            <div className="app-heroes__container__hero">
+                                                <img src={`/icons/${cleanedName}.png`} alt=""
+                                                     className={`app-heroes__container__hero-image`}/>
+                                            </div>
+                                            <h4 className={`app-heroes__container__hero-name`}>{hero?.localized_name}</h4>
+                                        </NavLink>
+                                    </div>
+                                )
+                        })
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </main>
     );
 };
 

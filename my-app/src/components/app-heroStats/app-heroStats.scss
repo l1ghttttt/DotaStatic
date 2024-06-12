@@ -78,6 +78,7 @@
     margin-top: 50px;
     @include mobile {
       margin-top: 20px;
+      text-align: center;
     }
   }
   &__main {
@@ -108,6 +109,9 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      @include mobile {
+        align-items: center;
+      }
       &__diagram {
         display: flex;
         align-items: center;

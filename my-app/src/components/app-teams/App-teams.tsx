@@ -83,7 +83,7 @@ const AppTeams = () => {
 
     if (loading) {
         dispatch({type: `ARRFALSE`});
-        return <span style={{position: `absolute`, top: `calc(100% - 200px)`}} className="loader"></span>;
+        return <span style={{position: `absolute`, top: `calc(100% - 100px)`}} className="loader"></span>;
     }
     if (!loading) {
         dispatch({type: `ARRTRUE`});
