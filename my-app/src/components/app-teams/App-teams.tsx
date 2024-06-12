@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './app-teams.css'
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import TeamsList from "../teams-list/Teams-list";
 import TeamsPagination from "../teams-pagination/Teams-pagination";
@@ -14,6 +14,8 @@ const AppTeams = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [term, setTerm] = useState("");
     const teamsPerPage = 50
+    const teamRef = useRef(null);
+    const textRef = useRef(null);
 
 
     useEffect(() => {
@@ -35,6 +37,32 @@ const AppTeams = () => {
         };
         getTeams();
     }, []);
+
+    useEffect(() => {
+        if (!textRef ||!textRef.current) return
+
+        const ObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1
+        };
+
+        const Observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (teamRef.current) {
+                    teamRef.current.style.transform = "translateY(0px)";
+                    teamRef.current.style.opacity = "1";
+                }
+            }
+        }, ObserverOptions);
+        if (textRef.current) {
+            Observer.observe(textRef.current);
+        }
+
+        return () => {
+            Observer.disconnect()
+        }
+    }, [loading]);
 
 
     const lastTeamIndex = currentPage * teamsPerPage;
@@ -64,9 +92,12 @@ const AppTeams = () => {
 
     return (
         <main className={"teams"}>
-            <h3 className={"teams__name"}>Teams</h3>
+            <div className={'teams__text'} ref={textRef}>
+                <h3 className={"teams__name"} ref={teamRef}>Teams</h3>
+            </div>
+
             <form action="">
-                <div className="form__group field">
+            <div className="form__group field">
                     <input type="input" className="form__field" placeholder="Название" name="name" id='name' required onChange={searchHandler}/>
                     <label htmlFor="name" className="form__label">Название</label>
                 </div>

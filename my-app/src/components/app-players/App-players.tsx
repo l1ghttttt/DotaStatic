@@ -16,6 +16,8 @@ const AppPlayers = () => {
     const [selected, setSelected] = useState(`all`);
     const mainRef = useRef(null);
     const selectRef = useRef(null);
+    const playerRef = useRef(null);
+    const textRef = useRef(null);
 
     useEffect(() => {
         const getPlayers = async () => {
@@ -35,6 +37,32 @@ const AppPlayers = () => {
             mainRef.current.style.minHeight = `${window.innerHeight}px`;
         }
     }, []);
+
+    useEffect(() => {
+        if (!textRef ||!textRef.current) return
+
+        const ObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1
+        };
+
+        const Observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (playerRef.current) {
+                    playerRef.current.style.transform = "translateY(0px)";
+                    playerRef.current.style.opacity = "1";
+                }
+            }
+        }, ObserverOptions);
+        if (textRef.current) {
+            Observer.observe(textRef.current);
+        }
+
+        return () => {
+            Observer.disconnect()
+        }
+    }, [loading]);
 
     const lastPlayerIndex = currentPage * playersPerPage;
     const firstPlayerIndex = lastPlayerIndex - playersPerPage;
@@ -73,7 +101,9 @@ const AppPlayers = () => {
 
     return (
         <main className="players" ref={mainRef}>
-            <h3>Players</h3>
+            <div className={`players__text`} ref={textRef}>
+                <h3 ref={playerRef}>Players</h3>
+            </div>
             <form action="">
                 <div className="form__group field">
                     <input type="input" className="form__field" placeholder="Название" name="name" id='name' required onChange={searchHandler}/>

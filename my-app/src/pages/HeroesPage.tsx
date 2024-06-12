@@ -1,5 +1,5 @@
 import React from 'react';
-import AppHeroes from "../components/app-heroes/App-heroes.jsx";
+import AppHeroes from "../components/app-heroes/App-heroes";
 import '../../src/components/app-heroes/app-heroes.css'
 import {useAppDispatch} from "../hooks/redux";
 

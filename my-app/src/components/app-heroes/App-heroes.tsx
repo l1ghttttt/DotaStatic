@@ -30,6 +30,49 @@ const AppHeroes = () => {
         getHeroes();
     }, []);
 
+    useEffect(() => {
+        if (!strRef ||!strRef.current) return
+
+        const ObserverOptions = {
+            root: null, // Использует viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Срабатывает, когда 50% элемента видны
+        };
+
+        const FirstObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (strRef.current) {
+                    strRef.current.style.transform = "translateX(0px)";
+                    strRef.current.style.opacity = "1";
+                    agiRef.current.style.transform = "translateX(0px)";
+                    agiRef.current.style.opacity = "1";
+                }
+            }
+        }, ObserverOptions);
+        if (strRef.current) {
+            FirstObserver.observe(strRef.current);
+        }
+
+        const SecondObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (intRef.current) {
+                    intRef.current.style.transform = "translateX(0px)";
+                    intRef.current.style.opacity = "1";
+                    allRef.current.style.transform = "translateX(0px)";
+                    allRef.current.style.opacity = "1";
+                }
+            }
+        }, ObserverOptions);
+        if (intRef.current) {
+            SecondObserver.observe(intRef.current);
+        }
+
+        return () => {
+            FirstObserver.disconnect()
+            FirstObserver.disconnect()
+        }
+    }, [loading]);
+
 
     if (loading) {
         dispatch({type: `ARRFALSE`});
