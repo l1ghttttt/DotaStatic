@@ -1,8 +1,212 @@
+@charset "UTF-8";
+:root {
+  --font-family-base: "Rubik", sans-serif;
+}
+
+.app {
+  overflow-x: hidden;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  position: relative;
+}
+
+body {
+  background-color: #000000;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+.loader {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 48px 0 #fff, -48px 0 #fff;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 48px 0 rgba(255, 255, 255, 0.1333333333), -48px 0 #FFF;
+  }
+  50% {
+    background-color: #FFF;
+    box-shadow: 48px 0 rgba(255, 255, 255, 0.1333333333), -48px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 48px 0 #FFF, -48px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+}
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../../../public/fonts/Rubik-Light.woff2") format("woff2 ");
+  font-weight: 400;
+  font-display: swap;
+}
 .herostats {
   width: 1100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 767px) {
+  .herostats {
+    width: 100vw;
+  }
 }
 .herostats__button {
   position: fixed;
@@ -19,6 +223,13 @@
   border-radius: 14px;
   transition-duration: 0.2s;
   box-shadow: 3px 5px 20px white;
+}
+@media (max-width: 767px) {
+  .herostats__button {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
 }
 .herostats__button:hover {
   background-color: #ffffff;
@@ -40,6 +251,11 @@
 .herostats__stats-name {
   font-size: 3rem;
 }
+@media (max-width: 767px) {
+  .herostats__stats-value {
+    text-align: center;
+  }
+}
 .herostats__name {
   text-shadow: 2px 2px 10px white;
   font-size: 5rem;
@@ -48,12 +264,24 @@
   margin-bottom: 60px;
   margin-top: 50px;
 }
+@media (max-width: 767px) {
+  .herostats__name {
+    margin-top: 20px;
+  }
+}
 .herostats__main {
   width: 100%;
   margin-bottom: 100px;
   display: flex;
   justify-content: center;
   gap: 100px;
+}
+@media (max-width: 767px) {
+  .herostats__main {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
 .herostats__main-avatar {
   width: 300px;
@@ -88,8 +316,13 @@
 .herostats__attributes {
   width: 70%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 60px;
+}
+@media (max-width: 767px) {
+  .herostats__attributes {
+    width: 100%;
+  }
 }
 .herostats__attributes-str {
   display: flex;
@@ -102,6 +335,13 @@
   width: 200px;
   color: red;
   text-shadow: 2px 2px 10px red;
+}
+@media (max-width: 767px) {
+  .herostats__attributes-str {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+    width: 100px;
+  }
 }
 .herostats__attributes-str img {
   border-radius: 50%;
@@ -121,6 +361,13 @@
   color: #00fa00;
   text-shadow: 2px 2px 10px #00fa00;
 }
+@media (max-width: 767px) {
+  .herostats__attributes-agi {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+    width: 100px;
+  }
+}
 .herostats__attributes-agi img {
   border-radius: 50%;
   border: 4px solid #00fa00;
@@ -138,6 +385,13 @@
   width: 200px;
   color: #00a2db;
   text-shadow: 2px 2px 10px #00a2db;
+}
+@media (max-width: 767px) {
+  .herostats__attributes-int {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+    width: 100px;
+  }
 }
 .herostats__attributes-int img {
   border-radius: 50%;
@@ -183,6 +437,16 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+.attributes-img {
+  width: 100px;
+  height: 100px;
+}
+@media (max-width: 767px) {
+  .attributes-img {
+    width: 70px;
+    height: 70px;
   }
 }
 

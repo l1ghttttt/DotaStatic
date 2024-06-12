@@ -129,21 +129,21 @@ const AppHeroStats = () => {
                     borderTop: `${borderStr}px solid red`,
                     borderBottom: `${borderStr}px solid red`
                 }}>
-                    <img src="/strength.png" alt="" width={100} height={100}/>
+                    <img src="/strength.png" alt="" className={`attributes-img`}/>
                     <p>{selectedHero?.base_str + "  " + " +" + selectedHero?.str_gain}</p>
                 </div>
                 <div className={`herostats__attributes-agi`} style={{
                     borderTop: `${borderAgi}px solid #00fa00`,
                     borderBottom: `${borderAgi}px solid #00fa00`
                 }}>
-                    <img src="/agi.png" alt="" width={100} height={100}/>
+                    <img src="/agi.png" alt="" className={`attributes-img`}/>
                     <p>{selectedHero?.base_agi + "  " + " +" + selectedHero?.agi_gain}</p>
                 </div>
                 <div className={`herostats__attributes-int`} style={{
                     borderTop: `${borderInt}px solid #00a2db`,
                     borderBottom: `${borderInt}px solid #00a2db`
                 }}>
-                    <img src="/int.png" alt="" width={100} height={100}/>
+                    <img src="/int.png" alt="" className={`attributes-img`}/>
                     <p>{selectedHero?.base_int + "  " + " +" + selectedHero?.int_gain}</p>
                 </div>
             </section>
@@ -151,19 +151,31 @@ const AppHeroStats = () => {
             <section className={`herostats__stats`}>
                 <h3 className={`herostats__stats-name`}>Начальные показатели</h3>
                 <p className={`herostats__stats-value`}>тип боя: {typeAttack}</p>
-                <p className={`herostats__stats-value`}>урон : {(selectedHero?.base_attack_min + damageBonus)} - {(selectedHero?.base_attack_max + damageBonus)}</p>
+                <p className={`herostats__stats-value`}>урон
+                    : {(selectedHero?.base_attack_min + damageBonus)} - {(selectedHero?.base_attack_max + damageBonus)}</p>
                 <p className={`herostats__stats-value`}>дальность атаки: {selectedHero?.attack_range}</p>
                 <p className={`herostats__stats-value`}>интервал атак: {selectedHero?.attack_rate}</p>
-                <p className={`herostats__stats-value`}>скорость атаки : {selectedHero?.base_attack_time + selectedHero?.base_agi}</p>
+                <p className={`herostats__stats-value`}>скорость атаки
+                    : {selectedHero?.base_attack_time + selectedHero?.base_agi}</p>
                 <p className={`herostats__stats-value`}>броня: {selectedHero?.base_armor + selectedHero?.base_agi * 0.16}</p>
-                <p className={`herostats__stats-value`}>здоровье : {selectedHero?.base_health + selectedHero?.base_str * 19}</p>
-                <p className={`herostats__stats-value`}>регенирация здоровья : {selectedHero?.base_health_regen + selectedHero?.base_str * 0.03}</p>
-                <p className={`herostats__stats-value`}>мана : {selectedHero?.base_mana + selectedHero?.base_int * 13}</p>
-                <p className={`herostats__stats-value`}>восстановление маны : {selectedHero?.base_mana_regen + selectedHero?.base_int * 0.04}</p>
+                <p className={`herostats__stats-value`}>здоровье
+                    : {selectedHero?.base_health + selectedHero?.base_str * 19}</p>
+                <p className={`herostats__stats-value`}>регенирация здоровья
+                    : {selectedHero?.base_health_regen + selectedHero?.base_str * 0.03}</p>
+                <p className={`herostats__stats-value`}>мана
+                    : {selectedHero?.base_mana + selectedHero?.base_int * 13}</p>
+                <p className={`herostats__stats-value`}>восстановление маны
+                    : {selectedHero?.base_mana_regen + selectedHero?.base_int * 0.04}</p>
                 <p className={`herostats__stats-value`}>скорость : {selectedHero?.move_speed}</p>
                 <p className={`herostats__stats-value`}>дневной/ночной обзор
                     : {selectedHero?.day_vision}/{selectedHero?.night_vision}</p>
+                <button className="herostats__button" type="button" onClick={() => {
+                    navigate(-1)
+                }}>
+                    ⬅ Назад
+                </button>
             </section>
+
         </main>
     );
 };

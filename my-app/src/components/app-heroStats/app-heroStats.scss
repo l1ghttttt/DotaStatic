@@ -1,3 +1,4 @@
+@import '../app/app';
 @mixin attribute {
   display: flex;
   flex-direction: column;
@@ -7,12 +8,20 @@
   padding: 10px 10px;
   border-radius: 20px;
   width: 200px;
+  @include mobile {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+    width: 100px;
+  }
 }
 .herostats {
   width: 1100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include mobile {
+    width: 100vw;
+  }
   &__button {
     position: fixed;
     top: 50px;
@@ -28,6 +37,11 @@
     border-radius: 14px;
     transition-duration: .2s;
     box-shadow: 3px 5px 20px white;
+    @include mobile {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
 
     &:hover {
       background-color: #ffffff;
@@ -49,6 +63,11 @@
     &-name {
       font-size: 3rem;
     }
+    &-value {
+      @include mobile {
+        text-align: center;
+      }
+    }
   }
   &__name {
     text-shadow: 2px 2px 10px white;
@@ -57,6 +76,9 @@
     font-weight: bold;
     margin-bottom: 60px;
     margin-top: 50px;
+    @include mobile {
+      margin-top: 20px;
+    }
   }
   &__main {
     width: 100%;
@@ -64,6 +86,11 @@
     display: flex;
     justify-content: center;
     gap: 100px;
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
 
     &-avatar {
       width: 300px;
@@ -99,10 +126,14 @@
   &__attributes {
     width: 70%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 60px;
+    @include mobile {
+      width: 100%;
+    }
     &-str {
       @include attribute;
+
       color: red;
       text-shadow: 2px 2px 10px red;
       img {
@@ -172,5 +203,14 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.attributes-img {
+  width: 100px;
+  height: 100px;
+  @include mobile {
+    width: 70px;
+    height: 70px;
   }
 }
