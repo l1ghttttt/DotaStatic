@@ -1,3 +1,5 @@
+@import "../app/app";
+
 .teams-list {
   color: white;
   display: grid;
@@ -5,7 +7,14 @@
   column-gap: 20px;
   row-gap: 20px;
   width: 100%;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
   &__card {
+    @include mobile {
+      max-width: 100vw;
+      font-size: 1rem;
+    }
     max-width: 540px;
     height: 150px;
     border-radius: 15px;
@@ -58,14 +67,28 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
+
       &-name {
+        text-align: center;
         font-size: 1.5rem;
+        @include mobile {
+          font-size: 1rem;
+
+        }
       }
       &-tag {
+        text-align: center;
         font-size: 1.3rem;
+        @include mobile {
+          font-size: .8rem;
+        }
       }
       &-rating {
+        text-align: center;
         font-size: 1.1rem;
+        @include mobile {
+          font-size: .7rem;
+        }
       }
     }
   }

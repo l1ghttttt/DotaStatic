@@ -1,7 +1,11 @@
+@import "../app/app";
 .teams {
   width: 1100px;
   min-height: 1000px;
   height: auto;
+  @include mobile {
+    width: 100vw;
+  }
   &__text {
     overflow: hidden;
     margin-bottom: 50px;
