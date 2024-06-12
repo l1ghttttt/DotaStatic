@@ -1,3 +1,4 @@
+@import "../app/app";
 .teams-list {
   color: white;
   display: grid;
@@ -6,6 +7,12 @@
   row-gap: 20px;
   width: 100%;
   &__card {
+    @include mobile {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     max-width: 540px;
     height: 150px;
     border-radius: 15px;

@@ -1,9 +1,213 @@
+@charset "UTF-8";
+:root {
+  --font-family-base: "Rubik", sans-serif;
+}
+
+.app {
+  overflow-x: hidden;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  position: relative;
+}
+
+body {
+  background-color: #000000;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+.loader {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 48px 0 #fff, -48px 0 #fff;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 48px 0 rgba(255, 255, 255, 0.1333333333), -48px 0 #FFF;
+  }
+  50% {
+    background-color: #FFF;
+    box-shadow: 48px 0 rgba(255, 255, 255, 0.1333333333), -48px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.1333333333);
+    box-shadow: 48px 0 #FFF, -48px 0 rgba(255, 255, 255, 0.1333333333);
+  }
+}
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../../../public/fonts/Rubik-Light.woff2") format("woff2 ");
+  font-weight: 400;
+  font-display: swap;
+}
 .playerStats {
   width: 1100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
+}
+@media (max-width: 767px) {
+  .playerStats {
+    width: 100vw;
+  }
 }
 .playerStats__button {
   width: 150px;
@@ -23,6 +227,14 @@
   border-radius: 14px;
   transition-duration: 0.2s;
   box-shadow: 3px 5px 20px white;
+}
+@media (max-width: 767px) {
+  .playerStats__button {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 20px 0;
+  }
 }
 .playerStats__button:hover {
   background-color: #ffffff;
@@ -47,6 +259,14 @@
   transition-duration: 0.2s;
   box-shadow: 3px 5px 20px white;
 }
+@media (max-width: 767px) {
+  .playerStats__button-home {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 50px;
+  }
+}
 .playerStats__button-home:hover {
   background-color: #ffffff;
   color: #000000;
@@ -65,9 +285,19 @@
   align-items: center;
   gap: 20px;
 }
+@media (max-width: 767px) {
+  .playerStats__friends__friend {
+    width: 33%;
+  }
+}
 .playerStats__friends__friend h4 {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+@media (max-width: 767px) {
+  .playerStats__friends__friend-info {
+    font-size: 0.75rem;
+  }
 }
 .playerStats__friends__friend-ava {
   width: 186px;
@@ -76,8 +306,19 @@
   border: 2px solid white;
   box-shadow: 5px 5px 30px rgba(255, 255, 255, 0.3);
 }
+@media (max-width: 767px) {
+  .playerStats__friends__friend-ava {
+    width: 120px;
+    height: 120px;
+  }
+}
 .playerStats__friends__friend-name {
   font-size: 1.4rem;
+}
+@media (max-width: 767px) {
+  .playerStats__friends__friend-name {
+    font-size: 1rem;
+  }
 }
 .playerStats__friends__friend-name a:link {
   text-decoration: none;
@@ -97,9 +338,20 @@
   font-weight: bold;
   margin: 60px 0;
 }
+@media (max-width: 767px) {
+  .playerStats-otherName {
+    font-size: 2rem;
+    margin: 30px 0;
+  }
+}
 .playerStats__offer {
   display: flex;
   flex-wrap: wrap;
+}
+@media (max-width: 767px) {
+  .playerStats__offer {
+    display: flex;
+  }
 }
 .playerStats__offer h4 {
   text-align: center;
@@ -109,9 +361,22 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
+@media (max-width: 767px) {
+  .playerStats__offer h4 {
+    font-size: 0.8rem;
+    width: 50%;
+  }
+}
 .playerStats__name {
   display: flex;
   align-items: center;
+}
+@media (max-width: 767px) {
+  .playerStats__name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .playerStats__name-url {
   text-shadow: 2px 2px 10px white;
@@ -121,6 +386,14 @@
   margin-bottom: 60px;
   margin-top: 30px;
   align-self: start;
+}
+@media (max-width: 767px) {
+  .playerStats__name-url {
+    align-self: center;
+    font-size: 1.3rem;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
 }
 .playerStats__name-url a:link {
   text-decoration: none;
@@ -141,10 +414,22 @@
   margin-bottom: 60px;
   margin-top: 30px;
 }
+@media (max-width: 767px) {
+  .playerStats__name-text {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
 .playerStats__name-rang {
   width: 150px;
   height: 150px;
   margin-right: 30px;
+}
+@media (max-width: 767px) {
+  .playerStats__name-rang {
+    margin-right: 0;
+  }
 }
 .playerStats__main {
   width: 100%;
@@ -152,11 +437,23 @@
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .playerStats__main {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .playerStats__main-div {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 767px) {
+  .playerStats__main-div {
+    width: auto;
+  }
 }
 .playerStats__main-avatar {
   width: 300px;
@@ -168,6 +465,11 @@
 .playerStats__main__mainStats {
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 767px) {
+  .playerStats__main__mainStats {
+    padding: 20px;
+  }
 }
 .playerStats__main__mainStats__games {
   display: flex;
@@ -203,6 +505,11 @@
   width: 300px;
   height: 5px;
   background-color: red;
+}
+@media (max-width: 767px) {
+  .bar {
+    width: 200px;
+  }
 }
 .bar:before {
   content: "";

@@ -199,9 +199,9 @@ const PlayerStats: React.FC = () => {
                             <img src={player?.avatarfull} alt="" className="playerStats__friends__friend-ava"/>
                             <h4 className="playerStats__friends__friend-name"><NavLink
                                 to={`/players/${player?.account_id}`}> {player?.personaname} </NavLink></h4>
-                            <h4>Игр вместе: {player?.with_games}</h4>
-                            <h4>Побед вместе: {player?.win}</h4>
-                            <h4>Общий WR: <span
+                            <h4 className="playerStats__friends__friend-info">Игр вместе: {player?.with_games}</h4>
+                            <h4 className="playerStats__friends__friend-info">Побед вместе: {player?.win}</h4>
+                            <h4 className="playerStats__friends__friend-info">Общий WR: <span
                                 style={{color: wrColor}}>{parseFloat((Number(player?.win) / Number(player?.with_games) * 100).toFixed(2))}%</span>
                             </h4>
                         </div>
