@@ -17,7 +17,7 @@ const AppNews = () => {
         const observerOptions = {
             root: null, // Использует viewport
             rootMargin: '0px',
-            threshold: 0.2 // Срабатывает, когда 50% элемента видны
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver(([entry]) => {
