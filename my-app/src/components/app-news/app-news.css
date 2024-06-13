@@ -201,17 +201,35 @@ svg * {
   margin-bottom: 50px;
   margin-top: 10px;
 }
+.main__text {
+  overflow: hidden;
+  margin-bottom: 50px;
+  height: 120px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+@media (max-width: 767px) {
+  .main__text {
+    margin-bottom: 25px;
+  }
+}
 .main__name {
   font-weight: bold;
   font-size: 100px;
   color: #ffffff;
   text-align: center;
   text-shadow: 2px 2px 10px white;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  transform: translateY(200px);
+  opacity: 0;
+  transition-duration: 0.2s;
+  transition-delay: 0.2s;
 }
 @media (max-width: 767px) {
   .main__name {
-    font-size: 4rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
   }
 }
 
@@ -266,6 +284,11 @@ svg * {
   left: calc(85% - 8rem);
   top: calc(85% - 2rem);
 }
+@media (max-width: 767px) {
+  .a p {
+    font-size: 1.5rem;
+  }
+}
 
 .b {
   grid-area: b;
@@ -278,6 +301,13 @@ svg * {
   position: absolute;
   left: calc(50% - 8rem);
   top: calc(25% - 2rem);
+}
+@media (max-width: 767px) {
+  .b p {
+    font-size: 1.5rem;
+    left: calc(50% - 6rem);
+    top: calc(25% - 1.5rem);
+  }
 }
 
 .c {
@@ -293,12 +323,26 @@ svg * {
   top: calc(50% - 3rem);
   color: black;
 }
+@media (max-width: 767px) {
+  .c .new_hero {
+    font-size: 1.5rem;
+    left: calc(18% - 4rem);
+    top: calc(50% - 1.5rem);
+  }
+}
 .c .muerta {
   font-size: 5rem;
   position: absolute;
   left: calc(80% - 8rem);
-  top: calc(50% - 5rem);
+  top: calc(50% - 4rem);
   color: black;
+}
+@media (max-width: 767px) {
+  .c .muerta {
+    font-size: 2.5rem;
+    left: calc(80% - 4rem);
+    top: calc(50% - 2rem);
+  }
 }
 
 .d {
@@ -312,6 +356,13 @@ svg * {
   position: absolute;
   left: calc(50% - 20rem);
   top: calc(85% - 2rem);
+}
+@media (max-width: 767px) {
+  .d p {
+    font-size: 1.25rem;
+    left: calc(50% - 10rem);
+    top: calc(85% - 1rem);
+  }
 }
 
 .e {

@@ -1,0 +1,17 @@
+@import "../app/app";
+.arrow {
+  position: sticky;
+  bottom: 100px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 1px;
+  margin-bottom: 50px;
+  transition-duration: .5s;
+  transform: translateY(-100px);
+  @include mobile {
+    display: none;
+  }
+}

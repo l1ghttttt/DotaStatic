@@ -3,6 +3,7 @@ import * as React from "react";
 import { TweenMax } from 'gsap';
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "../../hooks/redux";
+import './invisible.css'
 
 const DisappearingElement = () => {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const DisappearingElement = () => {
     }
 
     return (
-        <div ref={elementRef} style={{ position: 'sticky', bottom: '100px', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', width: '300px', height: '1px', opacity: opacity? 1 : 0, marginBottom: '50px', transitionDuration: `.5s`, transform: `translateY(-50px)` }}>
+        <div ref={elementRef} className={`arrow`} style={{opacity: opacity? 1 : 0}}>
             <img src="/ArrowDown.svg" alt="" width={300}/>
         </div>
     );
