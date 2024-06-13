@@ -1,6 +1,7 @@
 import {useEffect, useRef} from 'react';
 import * as React from "react";
 import './app-news.css'
+import AppBurger from "../AppBurger/AppBurger";
 
 const AppNews = () => {
     const contRef = useRef(null);
@@ -66,10 +67,10 @@ const AppNews = () => {
 
     return (
         <main className="main">
+            <AppBurger/>
             <div className={'main__text'} ref={textRef}>
                 <h2 className="main__name" ref={newsRef}>Лента новостей</h2>
             </div>
-
             <div className="container" ref={contRef}>
                 <div className="a black"><p>Патч 7.32b</p></div>
                 <div className="b"><p>Обновление 7.33</p></div>

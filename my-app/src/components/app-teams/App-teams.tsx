@@ -5,6 +5,7 @@ import axios from "axios";
 import TeamsList from "../teams-list/Teams-list";
 import TeamsPagination from "../teams-pagination/Teams-pagination";
 import {useAppDispatch} from "../../hooks/redux";
+import AppBurger from "../AppBurger/AppBurger";
 
 
 const AppTeams = () => {
@@ -92,6 +93,7 @@ const AppTeams = () => {
 
     return (
         <main className={"teams"}>
+            <AppBurger/>
             <div className={'teams__text'} ref={textRef}>
                 <h3 className={"teams__name"} ref={teamRef}>Teams</h3>
             </div>

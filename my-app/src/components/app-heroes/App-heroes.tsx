@@ -4,6 +4,7 @@ import './app-heroes.css'
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch} from "../../hooks/redux";
+import AppBurger from "../AppBurger/AppBurger";
 
 const AppHeroes = () => {
     const dispatch = useAppDispatch()
@@ -113,6 +114,7 @@ const AppHeroes = () => {
 
     return (
         <main>
+            <AppBurger/>
             <div className={'app-heroes__text'} ref={textRef}>
                 <h3 className={"teams__name"} ref={heroRef}>Heroes</h3>
             </div>

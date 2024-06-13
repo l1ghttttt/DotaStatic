@@ -1,0 +1,29 @@
+@import "../app/app";
+.MuiListItemButton-gutters {
+  a {
+    color: black;
+    font-family: "Montserrat";
+    &:link {
+      text-decoration: none;
+      color: black;
+    }
+
+    &:visited {
+      color: black;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      color: black;
+    }
+  }
+  a.active {
+    border-bottom: 6px solid black;
+  }
+}
+.burger__cont {
+  display: none;
+  @include mobile {
+  display: block;
+  }
+}

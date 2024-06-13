@@ -4,7 +4,6 @@ import './app-header.css';
 import {NavLink} from "react-router-dom";
 import DisappearingElement from "../../components/app-arrow/invisible"
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
-
 const AppHeader:React.FC = () => {
     const display = useAppSelector((state) => state.display);
     const slide = useAppSelector((state) => state.slide);

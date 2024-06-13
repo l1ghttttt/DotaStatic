@@ -4,7 +4,7 @@ import './app.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppHeader from "../app-header/App-header";
 import {Provider} from "react-redux";
-import { store } from '../store/store';
+import { store } from '../store/store'
 
 const Main = lazy(() => import('../../pages/MainPage'));
 const Hero = lazy(() => import('../../pages/HeroesPage'));
@@ -23,8 +23,9 @@ const App = () => {
         slide: `1`,
     }
 
+
     return (
-        <div className="app">Я
+        <div className="app">
             <Provider store={store}>
             <Router>
                 {initialState.display ? <AppHeader/> : null}
