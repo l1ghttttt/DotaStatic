@@ -169,7 +169,7 @@ const AppHeroStats = () => {
                 <p className={`herostats__stats-value`}>скорость : {selectedHero?.move_speed}</p>
                 <p className={`herostats__stats-value`}>дневной/ночной обзор
                     : {selectedHero?.day_vision}/{selectedHero?.night_vision}</p>
-                <button className="herostats__button" type="button" onClick={() => {
+                <button className="herostats__button-2" type="button" onClick={() => {
                     navigate(-1)
                 }}>
                     ⬅ Назад

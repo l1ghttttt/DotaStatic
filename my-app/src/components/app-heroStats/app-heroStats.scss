@@ -41,6 +41,7 @@
       position: relative;
       top: 0;
       right: 0;
+      margin-top: 30px;
     }
 
     &:hover {
@@ -217,5 +218,36 @@
   @include mobile {
     width: 70px;
     height: 70px;
+  }
+}
+
+.herostats__button-2 {
+  display: none;
+  @include mobile {
+    display: block;
+    position: fixed;
+    top: 50px;
+    right: calc(100% - 133px);
+    height: 48px;
+    padding-inline: 18px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    transition-duration: .2s;
+    box-shadow: 3px 5px 20px white;
+    @include mobile {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+
+    &:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
   }
 }
